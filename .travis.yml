@@ -12,7 +12,6 @@ deploy:
   secret_access_key:
     secure: bMpgyRaoAinIceP07Q7frS9J49a/x+dG6n8dKtISWDVaBRHbxxgZNm5bE3xvVVOZeDHKjUDg96OrYMe4HhzWV9zj0U6nA76ugCyTYww1Lg5z1XHUeBIs14RfWQfSyFryYr11iy1ehzZnpvfqk9AMH2bKFaDZs6bK+crkJfo9FGmEH8pu2wo7Q7BxR+w3nmxW3l3bogUHvUvzMUNZEH9QFehr6un38/TEHdu59gGeJ7Kn9fww/NtvQGtcmd0I0gVjqpy+Y/XhCw6BQMakO9LmaTQ//B8IZP4xTwgZvTi5tqqDYraHJ+o/4y4w8I4e4sYE6DG3uD1E1dg07C6TM8LLtRNIuDx9b9NCyiph05c478w4C2qI42OXMSaeTncU3nTYFjMPxT7XZIwyzf6TafH9PTGrJI48sKzw3T52xTUQ60zflWP/8m8ou19BB1PgXTKhp1CmizrQ7mS5U+pgQwbKc5j1vfD+Ylr4xF/5g48bPjRP/LdvGTr7yVO8/ud3mHdkY/F/dJJcluIYRCxg+4w00jlH77FKMP8GvsJbL/LtXlA5iSy5J6Q5GbMM3sPPAhhkBK66D6vrNJWaIWMVDndTm1MDc1J4JdmaEzV9PoWfDWWBrpEOpVT9dcbe8KirTWM9OMrpnyevG/ycR0Jn4CPMK/KRULi6U24fFnJml4vltsc=
   bucket: wdclients
-  acl: ''
   skip_cleanup: true
   local-dir: _book
   region: us-west-2
