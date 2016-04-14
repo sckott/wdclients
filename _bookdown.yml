@@ -1,0 +1,16 @@
+new_session: yes
+
+rmd_files: [
+  "index.Rmd",
+  "intro.Rmd",
+  "data-types.Rmd",
+  "apis.Rmd",
+  "ftp.Rmd",
+  "http.Rmd",
+  "caching.Rmd",
+  "packaging.Rmd",
+  "testing.Rmd",
+  "package-automation.Rmd"
+]
+
+before_chapter_script: "_common.R"

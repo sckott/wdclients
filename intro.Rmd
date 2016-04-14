@@ -1,0 +1,52 @@
+# Introduction
+
+```{r setup-intro, include = FALSE}
+install.packages <- function(...) invisible()
+```
+
+xxxx
+
+## What you will learn
+
+xxxxx
+
+## Prerequisites
+
+To run the code in this book, you will need to install both R and the RStudio IDE, an application that makes R easier to use. Both are open source, free and easy to install:
+
+1. Download and install R, <https://www.r-project.org/alt-home/>.
+1. Download and install RStudio, <http://www.rstudio.com/download>.
+1. Install needed packages (see below).
+
+### R packages
+
+```{r}
+pkgs <- c(
+  "jsonlite", "knitr", "httr"
+)
+install.packages(pkgs)
+```
+
+You'll also need to install some R packages. An R _package_ is a collection of functions, data, and documentation that extends the capabilities of base R. Using packages is key to the successful use of R. To install all the packages used in this book open RStudio and run:
+
+R will download the packages from CRAN and install them in your system library. If you have problems installing, make sure that you are connected to the internet, and that you haven't blocked <https://cran.rstudio.com> in your firewall or proxy.
+
+You will not be able to use the functions, objects, and help files in a package until you load it with `library()`. After you have downloaded the packages, you can load any of the packages into your current R session with the `library()` command, e.g.
+
+```{r, eval = FALSE}
+library(httr)
+```
+
+You will need to reload the package every time you start a new R session.
+
+## Acknowledgements
+
+xxx
+
+## Colophon
+
+This book was built with:
+
+```{r}
+devtools::session_info(pkgs)
+```
