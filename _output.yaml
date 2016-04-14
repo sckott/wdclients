@@ -1,0 +1,11 @@
+bookdown::gitbook:
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li><strong><a href="./">Building R Clients For Web Data</a></strong></li>
+    edit:
+      link: https://github.com/sckott/wdclients/edit/master/%s
+      text: "Edit"
+    sharing: no
+  css: wdclients.css
