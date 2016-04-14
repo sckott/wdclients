@@ -1,0 +1,16 @@
+language: R
+cache:
+  packages: true
+  directories:
+  - _book
+
+script: ./_build.sh
+
+deploy:
+  skip_cleanup: true
+  provider: s3
+  access_key_id: AKIAJAWVDYTQB5H7LSBA
+  secret_access_key:
+     secure: "XIO2BkC1QVgLHHihYu5we3i5CaDFa+9UVol6VRG3OzO+iYT09be5lMnn1+eX7wzi"
+  bucket: wdclients
+  local-dir: _book
