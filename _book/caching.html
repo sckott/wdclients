@@ -5,22 +5,22 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Building R Clients For Web Data</title>
+  <title>Building API Clients</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-  <meta name="description" content="This book will teach you how to write R clients for data on the web.">
+  <meta name="description" content="This book will teach you how to write API clients for R.">
   <meta name="generator" content="bookdown 0.0.60 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Building R Clients For Web Data" />
+  <meta property="og:title" content="Building API Clients" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://github.com/sckott/wdclients" />
+  <meta property="og:url" content="https://github.com/sckott/apiclients" />
   
-  <meta property="og:description" content="This book will teach you how to write R clients for data on the web." />
-  <meta name="github-repo" content="sckott/wdclients" />
+  <meta property="og:description" content="This book will teach you how to write API clients for R." />
+  <meta name="github-repo" content="sckott/apiclients" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Building R Clients For Web Data" />
+  <meta name="twitter:title" content="Building API Clients" />
   <meta name="twitter:site" content="@sckottie" />
-  <meta name="twitter:description" content="This book will teach you how to write R clients for data on the web." />
+  <meta name="twitter:description" content="This book will teach you how to write API clients for R." />
   
 
 <meta name="author" content="Scott Chamberlain">
@@ -94,12 +94,30 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#colophon"><i class="fa fa-check"></i><b>2.4</b> Colophon</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3</b> Data Types</a></li>
-<li class="chapter" data-level="4" data-path="apis.html"><a href="apis.html"><i class="fa fa-check"></i><b>4</b> APIs</a></li>
-<li class="chapter" data-level="5" data-path="ftp.html"><a href="ftp.html"><i class="fa fa-check"></i><b>5</b> FTP</a></li>
-<li class="chapter" data-level="6" data-path="http.html"><a href="http.html"><i class="fa fa-check"></i><b>6</b> HTTP</a></li>
-<li class="chapter" data-level="7" data-path="caching.html"><a href="caching.html"><i class="fa fa-check"></i><b>7</b> Caching</a></li>
-<li class="chapter" data-level="8" data-path="packaging.html"><a href="packaging.html"><i class="fa fa-check"></i><b>8</b> Packaging</a></li>
-<li class="chapter" data-level="9" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>9</b> Testing</a></li>
+<li class="chapter" data-level="4" data-path="apis.html"><a href="apis.html"><i class="fa fa-check"></i><b>4</b> APIs</a><ul>
+<li class="chapter" data-level="4.1" data-path="apis.html"><a href="apis.html#breakdown-of-the-types"><i class="fa fa-check"></i><b>4.1</b> Breakdown of the types</a></li>
+<li class="chapter" data-level="4.2" data-path="apis.html"><a href="apis.html#rest-apis"><i class="fa fa-check"></i><b>4.2</b> REST APIs</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="curl.html"><a href="curl.html"><i class="fa fa-check"></i><b>5</b> curl</a><ul>
+<li class="chapter" data-level="5.1" data-path="curl.html"><a href="curl.html#discover-curl-options"><i class="fa fa-check"></i><b>5.1</b> Discover curl options</a></li>
+<li class="chapter" data-level="5.2" data-path="curl.html"><a href="curl.html#other-ways-to-use-curl-besides-r"><i class="fa fa-check"></i><b>5.2</b> Other ways to use curl besides R</a></li>
+<li class="chapter" data-level="5.3" data-path="curl.html"><a href="curl.html#install-httr"><i class="fa fa-check"></i><b>5.3</b> Install httr</a></li>
+<li class="chapter" data-level="5.4" data-path="curl.html"><a href="curl.html#general-option-setting"><i class="fa fa-check"></i><b>5.4</b> general option setting</a></li>
+<li class="chapter" data-level="5.5" data-path="curl.html"><a href="curl.html#curl-options-in-ropensci-packages"><i class="fa fa-check"></i><b>5.5</b> curl options in rOpenSci packages</a></li>
+<li class="chapter" data-level="5.6" data-path="curl.html"><a href="curl.html#timeout"><i class="fa fa-check"></i><b>5.6</b> timeout</a></li>
+<li class="chapter" data-level="5.7" data-path="curl.html"><a href="curl.html#verbose"><i class="fa fa-check"></i><b>5.7</b> verbose</a></li>
+<li class="chapter" data-level="5.8" data-path="curl.html"><a href="curl.html#headers"><i class="fa fa-check"></i><b>5.8</b> headers</a></li>
+<li class="chapter" data-level="5.9" data-path="curl.html"><a href="curl.html#authenticate"><i class="fa fa-check"></i><b>5.9</b> authenticate</a></li>
+<li class="chapter" data-level="5.10" data-path="curl.html"><a href="curl.html#cookies"><i class="fa fa-check"></i><b>5.10</b> cookies</a></li>
+<li class="chapter" data-level="5.11" data-path="curl.html"><a href="curl.html#progress"><i class="fa fa-check"></i><b>5.11</b> progress</a></li>
+<li class="chapter" data-level="5.12" data-path="curl.html"><a href="curl.html#proxies"><i class="fa fa-check"></i><b>5.12</b> proxies</a></li>
+<li class="chapter" data-level="5.13" data-path="curl.html"><a href="curl.html#user-agent"><i class="fa fa-check"></i><b>5.13</b> user agent</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ftp.html"><a href="ftp.html"><i class="fa fa-check"></i><b>6</b> FTP</a></li>
+<li class="chapter" data-level="7" data-path="http.html"><a href="http.html"><i class="fa fa-check"></i><b>7</b> HTTP</a></li>
+<li class="chapter" data-level="8" data-path="caching.html"><a href="caching.html"><i class="fa fa-check"></i><b>8</b> Caching</a></li>
+<li class="chapter" data-level="9" data-path="packaging.html"><a href="packaging.html"><i class="fa fa-check"></i><b>9</b> Packaging</a></li>
+<li class="chapter" data-level="10" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>10</b> Testing</a></li>
 </ul>
 
       </nav>
@@ -109,7 +127,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Building R Clients For Web Data</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Building API Clients</a>
           </h1>
         </div>
 
@@ -118,7 +136,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
             <section class="normal" id="section-">
 <div id="caching" class="section level1">
-<h1><span class="header-section-number">7</span> Caching</h1>
+<h1><span class="header-section-number">8</span> Caching</h1>
 <p>xxxx</p>
 
 </div>
