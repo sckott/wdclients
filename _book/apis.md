@@ -5,6 +5,9 @@
 
 * SOAP
 * REST
-* xxx
+* RPC
 
 ## REST APIs
+
+## HTTP
+

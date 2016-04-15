@@ -5,6 +5,8 @@ rmd_files: [
   "intro.Rmd",
   "data-types.Rmd",
   "apis.Rmd",
+  "working-with-apis.Rmd",
+  "api-clients.Rmd",
   "curl.Rmd",
   "ftp.Rmd",
   "http.Rmd",
