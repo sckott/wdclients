@@ -1,4 +1,112 @@
 
 # Data Types
 
-xxxx
+There are a lot of different types of data that you may work with -
+I'll go over the major ones as it's important to be familiar with
+the data you'll be working with in this book.
+
+## JSON
+
+JSON (Javascript Object Notation) is becoming the most common
+data format on the web. Compared to XML (described below),
+it is simpler, and easier for humans to read. However, JSON does
+lose some specificity and metadata that XML is so good at. There
+is a variant of JSON called JSON-LD, for JSON Linked Data, that
+allows context to be included with a JSON document, e.g.,
+linking to schema.
+
+The most basic valid JSON document is `{}`, but of course it
+carries little value. A basic JSON blob with information looks
+like:
+
+```json
+{
+	"hello": "world"
+}
+```
+
+Another example:
+
+```json
+{
+	"foo": {
+		"bar": "Hello World!"
+	}
+}
+```
+
+JSON [http://www.json.org/](http://www.json.org/) is built on two
+structures:
+
+* A collection of name-value pairs, where the name is a string and the
+value can be a variety of objects.
+* An ordered list of values. In most languages, this is realized as
+an array, vector, list, or sequence.
+
+JSON data structures:
+
+* `object`: An unordered set of name/value pairs. Begins with `{`, and
+ends with `}`. Each name is followed by `:`, and the name/value pairs
+are separated by `,`.
+* `array`: An ordered collection of values. Begins with `[`, and ends
+with `]`. Values are separated by `,`.
+* `value`: A string in double quotes, a number, true or false, null, an
+object, or an array. Can be nested.
+* `string`: A sequence of zero or more Unicode characters, wrapped in
+double quotes, using backslash escapes.
+* `number`: A number.
+
+There are likely parsers in all programming languages, making it super
+easy to work with.
+
+Most web APIs provide JSON as the default data format, or at least
+provide it as an option.
+
+In R, the best way to work with JSON is with the `jsonlite` package. It
+is a modern JSON processor, and importantly converts JSON data
+structures described above to equivalent R data structures whenever
+possible. This makes it super easy to work with JSON data in R. Other
+JSON clients in R include `rjson` and `RJSONIO`.
+
+## XML
+
+XML (Extensible Markup Language) is a markup language - not just a data
+interchange format as is JSON. You can find the specification at
+[https://www.w3.org/TR/xml/](https://www.w3.org/TR/xml/).
+
+Here's an example:
+
+```xml
+<foo>
+	<bar>Hello World!</bar>
+</foo>
+```
+
+You can see how XML differs from JSON, but also the similarities. XML uses
+named elements, which JSON also uses (it's keys). XML simply takes
+up more text (bytes) to transfer the same amount of content, which makes
+JSON more appealing in cases where efficiency matters (e.g. in browser,
+and mobile platforms).
+
+## HTML
+
+HTML (Hyptertext Markup Lanugage) is the language of the web (together with
+CSS for styling and Javascript for adding behavior).
+
+Working with HTML as a data type is a last resort option. Sometimes you need
+data from a website, but all they have the HTML that defines the page. This is
+a last resort because it can be difficult/frustrating to extract what you
+want from HTML. In addition, HTML that defines a page can be changed at any
+moment, breaking your code to work with it - whereas an API or a file you
+download likely will not change, or change less often, or change in non-breaking
+ways.
+
+The best tools in R for working with HTML include `xml2` and `rvest`.
+
+## Files
+
+I won't go into detail on files as there are hundreds, if not more,
+different file formats. Good R tools for working with files are
+`readr`, `data.table::fread`, and ...
+
+

@@ -1,4 +1,14 @@
 
 # API clients
 
-## xxx
+## Writing R packages
+
+see Hadley's book...
+
+## Core HTTP helpers
+
+## What to return to users
+
+## Abstracted vs. 1-to-1 user interfaces
+
+## HTTP request inspection

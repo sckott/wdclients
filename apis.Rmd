@@ -3,10 +3,24 @@
 ## Breakdown of the types
 
 * SOAP
-* REST
 * RPC
+* REST
 
-## REST APIs
+## SOAP
+
+## RPC
+
+## REST
+
+## Others
+
+There are a few others worth mentioning:
+
+* GraphQL - a Facebook idea. Breaks from REST by introducing the concept
+of defining the data you want back in your query, and the server figures
+out how to get you that data. Whereas with REST you'd have a mental model
+of what you want, and make various REST calls to get that data. GraphQL
+isn't widely used, and there's currently no GraphQL clients for R.
 
 ## HTTP
 
