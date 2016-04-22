@@ -6,6 +6,11 @@ cache:
 
 script: "./_build.sh"
 
+addons:
+  apt:
+    packages:
+      - libv8-dev
+
 deploy:
   provider: s3
   access_key_id: AKIAJAWVDYTQB5H7LSBA
