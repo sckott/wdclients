@@ -12,4 +12,5 @@ Imports:
   knitr,
   rgbif
 Remotes:
-  rstudio/bookdown
+  rstudio/bookdown,
+  ropenscilabs/apipkgen
