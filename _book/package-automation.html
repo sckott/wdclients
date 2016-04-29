@@ -143,8 +143,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul></li>
 <li class="chapter" data-level="11" data-path="packaging.html"><a href="packaging.html"><i class="fa fa-check"></i><b>11</b> Packaging</a></li>
 <li class="chapter" data-level="12" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>12</b> Testing</a><ul>
-<li class="chapter" data-level="12.1" data-path="testing.html"><a href="testing.html#testthat"><i class="fa fa-check"></i><b>12.1</b> testthat</a></li>
-<li class="chapter" data-level="12.2" data-path="testing.html"><a href="testing.html#vcr-1"><i class="fa fa-check"></i><b>12.2</b> vcr</a></li>
+<li class="chapter" data-level="12.1" data-path="testing.html"><a href="testing.html#testthat"><i class="fa fa-check"></i><b>12.1</b> testthat</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="testing.html"><a href="testing.html#skipping-tests"><i class="fa fa-check"></i><b>12.1.1</b> Skipping tests</a></li>
+<li class="chapter" data-level="12.1.2" data-path="testing.html"><a href="testing.html#test-if-web-resource-is-up"><i class="fa fa-check"></i><b>12.1.2</b> Test if web resource is up</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="testing.html"><a href="testing.html#mocking-web-requests"><i class="fa fa-check"></i><b>12.2</b> Mocking web requests</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="testing.html"><a href="testing.html#vcr-1"><i class="fa fa-check"></i><b>12.2.1</b> vcr</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="testing.html"><a href="testing.html#webmockr"><i class="fa fa-check"></i><b>12.3</b> webmockr</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="package-automation.html"><a href="package-automation.html"><i class="fa fa-check"></i><b>13</b> Package Automation</a><ul>
 <li class="chapter" data-level="13.1" data-path="package-automation.html"><a href="package-automation.html#api-specifications"><i class="fa fa-check"></i><b>13.1</b> API Specifications</a></li>
@@ -170,7 +176,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
             <section class="normal" id="section-">
 <div id="package-automation" class="section level1">
 <h1><span class="header-section-number">13</span> Package Automation</h1>
-<p>Writing bespoke R clients can be lots of fun, and is often necessary beacuse two REST APIs are never the same. However, there are some ways to automate package creation.</p>
+<p>Writing bespoke R clients can be lots of fun, and is often necessary beacuse any two randomly chosen REST APIs do not use the same patterns. However, there are some ways to automate package creation.</p>
 <div id="api-specifications" class="section level2">
 <h2><span class="header-section-number">13.1</span> API Specifications</h2>
 <p>Some REST APIs have machine readable specifications for their API. Most small operations don’t have time for this, so you usually see this in larger companies. These specifications allow a definition of the API, but can also be used to programmatically create a client.</p>
@@ -180,9 +186,53 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <div id="package-generator" class="section level2">
 <h2><span class="header-section-number">13.2</span> Package generator</h2>
 <p><code>apipkgen</code> <a href="https://github.com/ropenscilabs/apipkgen"><a href="https://github.com/ropenscilabs/apipkgen" class="uri">https://github.com/ropenscilabs/apipkgen</a></a> is a package that can be used to generate R clients from API specs.</p>
+<p>The following is a brief example</p>
+<pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">&quot;ropenscilabs/apipkgen&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;apipkgen&quot;</span>)</code></pre>
+<p>Generate a package using the function <code>generate_pkg()</code></p>
+<pre class="sourceCode r"><code class="sourceCode r">template &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&#39;examples&#39;</span>, <span class="st">&#39;template_crossref.yml&#39;</span>, <span class="dt">package =</span> <span class="st">&quot;apipkgen&quot;</span>)
+apipkgen::<span class="kw">generate_pkg</span>(<span class="st">&quot;../crpkg&quot;</span>, <span class="dt">template_path =</span> template)</code></pre>
+<p>The package created doesn’t have any exported functions, just internal functions for your to build user facing functions.</p>
+<p>Let’s write a user facing functions. The Crossref API template above specified for the <code>works</code> route that parameters are <code>query</code> and <code>rows</code>. So let’s work with those.</p>
+<pre class="sourceCode r"><code class="sourceCode r">crossref_works &lt;-<span class="st"> </span>function(<span class="dt">query =</span> <span class="ot">NULL</span>, <span class="dt">rows =</span> <span class="ot">NULL</span>, ...) {
+  <span class="kw">works</span>(<span class="dt">query =</span> query, <span class="dt">rows =</span> rows, ...)
+}</code></pre>
+<p>In addition, it’s a good idea to always allow users to pass in curl options. Beginners can ignore it, but power curl users will want/have to play with curl options. The function builder builds in <code>...</code> as a parameter so in the user facing function above all you have to do is add that as well for users to access.</p>
+<p>Now install the new package. Go to the new directory, and in R/RStudio run <code>devtools::document()</code> and <code>devtools::install()</code> (or equivalent).</p>
+<p>Now you can use the package. Call the function. The package builder gives back plain text, so you have to parse it yourself.</p>
+<pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">crossref_works</span>(<span class="dt">query =</span> <span class="st">&quot;science&quot;</span>)
+jsonlite::<span class="kw">fromJSON</span>(res)
+<span class="co">#&gt; $status</span>
+<span class="co">#&gt; [1] &quot;ok&quot;</span>
+<span class="co">#&gt;</span>
+<span class="co">#&gt; $`message-type`</span>
+<span class="co">#&gt; [1] &quot;work-list&quot;</span>
+<span class="co">#&gt;</span>
+<span class="co">#&gt; $`message-version`</span>
+<span class="co">#&gt; [1] &quot;1.0.0&quot;</span>
+<span class="co">#&gt;</span>
+<span class="co">#&gt; $message</span>
+<span class="co">#&gt; $message$query</span>
+<span class="co">#&gt; $message$query$`search-terms`</span>
+<span class="co">#&gt; [1] &quot;science&quot;</span>
+<span class="co">#&gt;</span>
+<span class="co">#&gt; $message$query$`start-index`</span>
+<span class="co">#&gt; [1] 0</span>
+<span class="co">#&gt;</span>
+<span class="co">#&gt;</span>
+<span class="co">#&gt; $message$`items-per-page`</span>
+<span class="co">#&gt; [1] 20</span>
+<span class="co">#&gt;</span>
+<span class="co">#&gt; $message$items</span>
+<span class="co">#&gt;     indexed.date-parts    indexed.date-time indexed.timestamp reference-count</span>
+<span class="co">#&gt; 1        2015, 12, 27 2015-12-27T23:37:50Z      1.451259e+12               0</span>
+<span class="co">#&gt; 2        2015, 12, 24 2015-12-24T22:03:23Z      1.450995e+12               0</span>
+<span class="co">#&gt; 3        2015, 12, 25 2015-12-25T19:17:30Z      1.451071e+12               0</span>
+<span class="co">#&gt; 4        2015, 12, 27 2015-12-27T19:35:51Z      1.451245e+12               0</span></code></pre>
 </div>
 <div id="keeping-up-to-date" class="section level2">
 <h2><span class="header-section-number">13.3</span> Keeping up to date</h2>
+<p>xxxx</p>
 
 </div>
 </div>

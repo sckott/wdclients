@@ -143,8 +143,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul></li>
 <li class="chapter" data-level="11" data-path="packaging.html"><a href="packaging.html"><i class="fa fa-check"></i><b>11</b> Packaging</a></li>
 <li class="chapter" data-level="12" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>12</b> Testing</a><ul>
-<li class="chapter" data-level="12.1" data-path="testing.html"><a href="testing.html#testthat"><i class="fa fa-check"></i><b>12.1</b> testthat</a></li>
-<li class="chapter" data-level="12.2" data-path="testing.html"><a href="testing.html#vcr-1"><i class="fa fa-check"></i><b>12.2</b> vcr</a></li>
+<li class="chapter" data-level="12.1" data-path="testing.html"><a href="testing.html#testthat"><i class="fa fa-check"></i><b>12.1</b> testthat</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="testing.html"><a href="testing.html#skipping-tests"><i class="fa fa-check"></i><b>12.1.1</b> Skipping tests</a></li>
+<li class="chapter" data-level="12.1.2" data-path="testing.html"><a href="testing.html#test-if-web-resource-is-up"><i class="fa fa-check"></i><b>12.1.2</b> Test if web resource is up</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="testing.html"><a href="testing.html#mocking-web-requests"><i class="fa fa-check"></i><b>12.2</b> Mocking web requests</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="testing.html"><a href="testing.html#vcr-1"><i class="fa fa-check"></i><b>12.2.1</b> vcr</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="testing.html"><a href="testing.html#webmockr"><i class="fa fa-check"></i><b>12.3</b> webmockr</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="package-automation.html"><a href="package-automation.html"><i class="fa fa-check"></i><b>13</b> Package Automation</a><ul>
 <li class="chapter" data-level="13.1" data-path="package-automation.html"><a href="package-automation.html#api-specifications"><i class="fa fa-check"></i><b>13.1</b> API Specifications</a></li>
@@ -172,9 +178,30 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h1><span class="header-section-number">12</span> Testing</h1>
 <div id="testthat" class="section level2">
 <h2><span class="header-section-number">12.1</span> testthat</h2>
+<div id="skipping-tests" class="section level3">
+<h3><span class="header-section-number">12.1.1</span> Skipping tests</h3>
+<p>You should skip any tests on CRAN via <code>testthat::skip_on_cran()</code> that call web resources, whether they be an API, FTP, flat file, or URL. This is because those web resources can be down when the test is run - at which point CRAN maintainers will complain to you that your tests are failing.</p>
+<p>There are likely a subset of unit tests you can run for functions that call web resources - e.g., you can test failure modes if the function call does not actually make a web request, but rather is testing parameter inputs, etc.</p>
+<p>If you skip tests on CRAN, you should still run tests on your continuous integration system. But those can be skipped as well via <code>testthat::skip_on_travis()</code>.</p>
 </div>
-<div id="vcr-1" class="section level2">
-<h2><span class="header-section-number">12.2</span> vcr</h2>
+<div id="test-if-web-resource-is-up" class="section level3">
+<h3><span class="header-section-number">12.1.2</span> Test if web resource is up</h3>
+<p>One approach to web resources is to safely test if the web service is up or not before running further tests. This way you can still run your test suite if the web resourcs is up, but avoid failures if it is not up.</p>
+</div>
+</div>
+<div id="mocking-web-requests" class="section level2">
+<h2><span class="header-section-number">12.2</span> Mocking web requests</h2>
+<p>A commonly used solution in test suites in other programming languages is to mock web requests. That is, you can store the results of a web request (usually as JSON data) in files in your test suite directory, then test expections use those cached files instead of doing real web requests. This requires that web requests are matched against the available cached files.</p>
+<p>This approach of course requires libraries that provide the infrastructure to do make this easy - two approaches are described below with two R packages ported from the Ruby programming language.</p>
+<div id="vcr-1" class="section level3">
+<h3><span class="header-section-number">12.2.1</span> vcr</h3>
+<p><code>vcr</code> takes the approach of storing cached requests in specifically named files, or <em>cassettes</em>. You insert a cassette to use it, do web requests, then eject the cassette when done. After ejection, the file is still there, but you are no longer writing to it.</p>
+<p>Note: It is still in early development, so expect changes.</p>
+</div>
+</div>
+<div id="webmockr" class="section level2">
+<h2><span class="header-section-number">12.3</span> webmockr</h2>
+<p><code>webmockr</code> takes a different approach than <code>vcr</code>. It doesn’t require you to set up certain files to write to, but rather caches responses to web requests in the Ruby session during interactive use. Of course, for usage in a test suite, the responses are written to files, that then are used in subsequent test suite runs.</p>
 
 </div>
 </div>
