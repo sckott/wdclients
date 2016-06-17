@@ -4,11 +4,24 @@
 install.packages <- function(...) invisible()
 ```
 
-xxxx
+R is a powerful language for working with data. There is an immense amount 
+of data on the internet. This book goes over the individual parts of working with data on the web, and teaches you how to make packages to get data on 
+the web.
 
 ## What you will learn
 
-xxxxx
+There are many components to working with data on the web. This book won't 
+be the most detailed in any of them, but will lay a foundation for doing 
+each component well.
+
+You'll learn about File Transfer Protocl (FTP), and how to work with it in R.
+Many government organizations provide data this way. It's a great method for
+large data.
+
+Much of the book will cover working with web Application Programming Interfaces (APIs). Public APIs are all over the place now: there's on for [IMDB][imdb], for [Star Wars][sw], for many [US government departments][datagov], and a lot more.
+
+Finally, we'll cover how to write R packages to work with data on the web, 
+whether the data is from FTP, scraped from website, or through a web API.
 
 ## Prerequisites
 
@@ -50,3 +63,7 @@ This book was built with:
 ```{r}
 devtools::session_info(pkgs)
 ```
+
+[imdb]: http://www.omdbapi.com/
+[sw]: https://swapi.co/
+[datagov]: https://www.data.gov/

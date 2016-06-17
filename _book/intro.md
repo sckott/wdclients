@@ -3,11 +3,24 @@
 
 
 
-xxxx
+R is a powerful language for working with data. There is an immense amount 
+of data on the internet. This book goes over the individual parts of working with data on the web, and teaches you how to make packages to get data on 
+the web.
 
 ## What you will learn
 
-xxxxx
+There are many components to working with data on the web. This book won't 
+be the most detailed in any of them, but will lay a foundation for doing 
+each component well.
+
+You'll learn about File Transfer Protocl (FTP), and how to work with it in R.
+Many government organizations provide data this way. It's a great method for
+large data.
+
+Much of the book will cover working with web Application Programming Interfaces (APIs). Public APIs are all over the place now: there's on for [IMDB][imdb], for [Star Wars][sw], for many [US government departments][datagov], and a lot more.
+
+Finally, we'll cover how to write R packages to work with data on the web, 
+whether the data is from FTP, scraped from website, or through a web API.
 
 ## Prerequisites
 
@@ -53,29 +66,33 @@ This book was built with:
 devtools::session_info(pkgs)
 #> Session info --------------------------------------------------------------
 #>  setting  value                                      
-#>  version  R version 3.2.4 Patched (2016-03-16 r70355)
+#>  version  R version 3.3.0 Patched (2016-05-09 r70593)
 #>  system   x86_64, darwin13.4.0                       
 #>  ui       X11                                        
 #>  language (EN)                                       
 #>  collate  en_US.UTF-8                                
 #>  tz       America/Los_Angeles                        
-#>  date     2016-04-04
+#>  date     2016-06-17
 #> Packages ------------------------------------------------------------------
-#>  package  * version date       source        
-#>  curl       0.9.6   2016-02-17 CRAN (R 3.2.3)
-#>  digest     0.6.9   2016-01-08 CRAN (R 3.2.3)
-#>  evaluate   0.8.3   2016-03-05 CRAN (R 3.2.3)
-#>  formatR    1.3     2016-03-05 CRAN (R 3.2.3)
-#>  highr      0.5.1   2015-09-18 CRAN (R 3.2.2)
-#>  httr       1.1.0   2016-01-28 CRAN (R 3.2.3)
-#>  jsonlite   0.9.19  2015-11-28 CRAN (R 3.2.2)
-#>  knitr      1.12.3  2016-01-22 CRAN (R 3.2.3)
-#>  magrittr   1.5     2014-11-22 CRAN (R 3.2.0)
-#>  markdown   0.7.7   2015-04-22 CRAN (R 3.2.0)
-#>  mime       0.4     2015-09-03 CRAN (R 3.2.0)
-#>  openssl    0.9.2   2016-02-26 CRAN (R 3.2.3)
-#>  R6         2.1.2   2016-01-26 CRAN (R 3.2.3)
-#>  stringi    1.0-1   2015-10-22 CRAN (R 3.2.2)
-#>  stringr    1.0.0   2015-04-30 CRAN (R 3.2.0)
-#>  yaml       2.1.13  2014-06-12 CRAN (R 3.2.0)
+#>  package  * version date       source                      
+#>  curl       0.9.7   2016-04-10 CRAN (R 3.3.0)              
+#>  digest     0.6.9   2016-01-08 CRAN (R 3.3.0)              
+#>  evaluate   0.9     2016-04-29 CRAN (R 3.3.0)              
+#>  formatR    1.4     2016-05-09 CRAN (R 3.3.0)              
+#>  highr      0.6     2016-05-09 CRAN (R 3.3.0)              
+#>  httr       1.2.0   2016-06-15 CRAN (R 3.3.0)              
+#>  jsonlite   0.9.22  2016-06-15 CRAN (R 3.3.0)              
+#>  knitr      1.13.1  2016-06-17 Github (yihui/knitr@ce40cbf)
+#>  magrittr   1.5     2014-11-22 CRAN (R 3.3.0)              
+#>  markdown   0.7.7   2015-04-22 CRAN (R 3.3.0)              
+#>  mime       0.4     2015-09-03 CRAN (R 3.3.0)              
+#>  openssl    0.9.4   2016-05-25 CRAN (R 3.3.0)              
+#>  R6         2.1.2   2016-01-26 CRAN (R 3.3.0)              
+#>  stringi    1.1.1   2016-05-27 CRAN (R 3.3.0)              
+#>  stringr    1.0.0   2015-04-30 CRAN (R 3.3.0)              
+#>  yaml       2.1.13  2014-06-12 CRAN (R 3.3.0)
 ```
+
+[imdb]: http://www.omdbapi.com/
+[sw]: https://swapi.co/
+[datagov]: https://www.data.gov/

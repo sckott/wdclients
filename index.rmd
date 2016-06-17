@@ -1,13 +1,16 @@
 ---
 knit: "bookdown::render_book"
-title: "Building API Clients"
+title: "Building R Clients for Web Data"
 author: "Scott Chamberlain"
 description: "This book will teach you how to write API clients for R."
-url: 'https\://github.com/sckott/apiclients'
-github-repo: sckott/apiclients
+url: 'https\://github.com/sckott/wdclients'
+github-repo: sckott/wdclients
 twitter-handle: sckottie
+documentclass: book
 ---
 
-# Welcome
+# Welcome {-}
 
-book for building API clients.
+This is the website for the book "__Building R Clients for Web Data__".
+
+This work is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0)

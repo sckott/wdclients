@@ -5,20 +5,20 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Building API Clients</title>
+  <title>Building R Clients for Web Data</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="This book will teach you how to write API clients for R.">
-  <meta name="generator" content="bookdown 0.0.60 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.0.73 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Building API Clients" />
+  <meta property="og:title" content="Building R Clients for Web Data" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://github.com/sckott/apiclients" />
+  <meta property="og:url" content="https://github.com/sckott/wdclients" />
   
   <meta property="og:description" content="This book will teach you how to write API clients for R." />
-  <meta name="github-repo" content="sckott/apiclients" />
+  <meta name="github-repo" content="sckott/wdclients" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Building API Clients" />
+  <meta name="twitter:title" content="Building R Clients for Web Data" />
   <meta name="twitter:site" content="@sckottie" />
   <meta name="twitter:description" content="This book will teach you how to write API clients for R." />
   
@@ -35,6 +35,7 @@
 <link rel="prev" href="ftp.html">
 <link rel="next" href="caching.html">
 
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
@@ -84,40 +85,85 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><strong><a href="./">Building R Clients For Web Data</a></strong></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a></li>
-<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
-<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#what-you-will-learn"><i class="fa fa-check"></i><b>2.1</b> What you will learn</a></li>
-<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#prerequisites"><i class="fa fa-check"></i><b>2.2</b> Prerequisites</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="introduction.html"><a href="introduction.html#r-packages"><i class="fa fa-check"></i><b>2.2.1</b> R packages</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#what-you-will-learn"><i class="fa fa-check"></i><b>1.1</b> What you will learn</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#prerequisites"><i class="fa fa-check"></i><b>1.2</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#r-packages"><i class="fa fa-check"></i><b>1.2.1</b> R packages</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#acknowledgements"><i class="fa fa-check"></i><b>2.3</b> Acknowledgements</a></li>
-<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#colophon"><i class="fa fa-check"></i><b>2.4</b> Colophon</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#acknowledgements"><i class="fa fa-check"></i><b>1.3</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#colophon"><i class="fa fa-check"></i><b>1.4</b> Colophon</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3</b> Data Types</a></li>
-<li class="chapter" data-level="4" data-path="apis.html"><a href="apis.html"><i class="fa fa-check"></i><b>4</b> APIs</a><ul>
-<li class="chapter" data-level="4.1" data-path="apis.html"><a href="apis.html#breakdown-of-the-types"><i class="fa fa-check"></i><b>4.1</b> Breakdown of the types</a></li>
-<li class="chapter" data-level="4.2" data-path="apis.html"><a href="apis.html#rest-apis"><i class="fa fa-check"></i><b>4.2</b> REST APIs</a></li>
+<li class="chapter" data-level="2" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2</b> Data Types</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-types.html"><a href="data-types.html#json"><i class="fa fa-check"></i><b>2.1</b> JSON</a></li>
+<li class="chapter" data-level="2.2" data-path="data-types.html"><a href="data-types.html#xml"><i class="fa fa-check"></i><b>2.2</b> XML</a></li>
+<li class="chapter" data-level="2.3" data-path="data-types.html"><a href="data-types.html#html"><i class="fa fa-check"></i><b>2.3</b> HTML</a></li>
+<li class="chapter" data-level="2.4" data-path="data-types.html"><a href="data-types.html#files"><i class="fa fa-check"></i><b>2.4</b> Files</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="curl.html"><a href="curl.html"><i class="fa fa-check"></i><b>5</b> curl</a><ul>
-<li class="chapter" data-level="5.1" data-path="curl.html"><a href="curl.html#discover-curl-options"><i class="fa fa-check"></i><b>5.1</b> Discover curl options</a></li>
-<li class="chapter" data-level="5.2" data-path="curl.html"><a href="curl.html#other-ways-to-use-curl-besides-r"><i class="fa fa-check"></i><b>5.2</b> Other ways to use curl besides R</a></li>
-<li class="chapter" data-level="5.3" data-path="curl.html"><a href="curl.html#install-httr"><i class="fa fa-check"></i><b>5.3</b> Install httr</a></li>
-<li class="chapter" data-level="5.4" data-path="curl.html"><a href="curl.html#general-option-setting"><i class="fa fa-check"></i><b>5.4</b> general option setting</a></li>
-<li class="chapter" data-level="5.5" data-path="curl.html"><a href="curl.html#curl-options-in-ropensci-packages"><i class="fa fa-check"></i><b>5.5</b> curl options in rOpenSci packages</a></li>
-<li class="chapter" data-level="5.6" data-path="curl.html"><a href="curl.html#timeout"><i class="fa fa-check"></i><b>5.6</b> timeout</a></li>
-<li class="chapter" data-level="5.7" data-path="curl.html"><a href="curl.html#verbose"><i class="fa fa-check"></i><b>5.7</b> verbose</a></li>
-<li class="chapter" data-level="5.8" data-path="curl.html"><a href="curl.html#headers"><i class="fa fa-check"></i><b>5.8</b> headers</a></li>
-<li class="chapter" data-level="5.9" data-path="curl.html"><a href="curl.html#authenticate"><i class="fa fa-check"></i><b>5.9</b> authenticate</a></li>
-<li class="chapter" data-level="5.10" data-path="curl.html"><a href="curl.html#cookies"><i class="fa fa-check"></i><b>5.10</b> cookies</a></li>
-<li class="chapter" data-level="5.11" data-path="curl.html"><a href="curl.html#progress"><i class="fa fa-check"></i><b>5.11</b> progress</a></li>
-<li class="chapter" data-level="5.12" data-path="curl.html"><a href="curl.html#proxies"><i class="fa fa-check"></i><b>5.12</b> proxies</a></li>
-<li class="chapter" data-level="5.13" data-path="curl.html"><a href="curl.html#user-agent"><i class="fa fa-check"></i><b>5.13</b> user agent</a></li>
+<li class="chapter" data-level="3" data-path="apis.html"><a href="apis.html"><i class="fa fa-check"></i><b>3</b> APIs</a><ul>
+<li class="chapter" data-level="3.1" data-path="apis.html"><a href="apis.html#breakdown-of-the-types"><i class="fa fa-check"></i><b>3.1</b> Breakdown of the types</a></li>
+<li class="chapter" data-level="3.2" data-path="apis.html"><a href="apis.html#rpc"><i class="fa fa-check"></i><b>3.2</b> RPC</a></li>
+<li class="chapter" data-level="3.3" data-path="apis.html"><a href="apis.html#soap"><i class="fa fa-check"></i><b>3.3</b> SOAP</a></li>
+<li class="chapter" data-level="3.4" data-path="apis.html"><a href="apis.html#rest"><i class="fa fa-check"></i><b>3.4</b> REST</a></li>
+<li class="chapter" data-level="3.5" data-path="apis.html"><a href="apis.html#others"><i class="fa fa-check"></i><b>3.5</b> Others</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="ftp.html"><a href="ftp.html"><i class="fa fa-check"></i><b>6</b> FTP</a></li>
-<li class="chapter" data-level="7" data-path="http.html"><a href="http.html"><i class="fa fa-check"></i><b>7</b> HTTP</a></li>
-<li class="chapter" data-level="8" data-path="caching.html"><a href="caching.html"><i class="fa fa-check"></i><b>8</b> Caching</a></li>
-<li class="chapter" data-level="9" data-path="packaging.html"><a href="packaging.html"><i class="fa fa-check"></i><b>9</b> Packaging</a></li>
-<li class="chapter" data-level="10" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>10</b> Testing</a></li>
+<li class="chapter" data-level="4" data-path="working-with-apis.html"><a href="working-with-apis.html"><i class="fa fa-check"></i><b>4</b> Working with APIs</a><ul>
+<li class="chapter" data-level="4.1" data-path="working-with-apis.html"><a href="working-with-apis.html#xxx"><i class="fa fa-check"></i><b>4.1</b> xxx</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="api-clients.html"><a href="api-clients.html"><i class="fa fa-check"></i><b>5</b> API clients</a><ul>
+<li class="chapter" data-level="5.1" data-path="api-clients.html"><a href="api-clients.html#writing-r-packages"><i class="fa fa-check"></i><b>5.1</b> Writing R packages</a></li>
+<li class="chapter" data-level="5.2" data-path="api-clients.html"><a href="api-clients.html#core-http-helpers"><i class="fa fa-check"></i><b>5.2</b> Core HTTP helpers</a></li>
+<li class="chapter" data-level="5.3" data-path="api-clients.html"><a href="api-clients.html#what-to-return-to-users"><i class="fa fa-check"></i><b>5.3</b> What to return to users</a></li>
+<li class="chapter" data-level="5.4" data-path="api-clients.html"><a href="api-clients.html#abstracted-vs.1-to-1-user-interfaces"><i class="fa fa-check"></i><b>5.4</b> Abstracted vs. 1-to-1 user interfaces</a></li>
+<li class="chapter" data-level="5.5" data-path="api-clients.html"><a href="api-clients.html#http-request-inspection"><i class="fa fa-check"></i><b>5.5</b> HTTP request inspection</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="curl.html"><a href="curl.html"><i class="fa fa-check"></i><b>6</b> curl</a><ul>
+<li class="chapter" data-level="6.1" data-path="curl.html"><a href="curl.html#discover-curl-options"><i class="fa fa-check"></i><b>6.1</b> Discover curl options</a></li>
+<li class="chapter" data-level="6.2" data-path="curl.html"><a href="curl.html#other-ways-to-use-curl-besides-r"><i class="fa fa-check"></i><b>6.2</b> Other ways to use curl besides R</a></li>
+<li class="chapter" data-level="6.3" data-path="curl.html"><a href="curl.html#install-httr"><i class="fa fa-check"></i><b>6.3</b> Install httr</a></li>
+<li class="chapter" data-level="6.4" data-path="curl.html"><a href="curl.html#general-option-setting"><i class="fa fa-check"></i><b>6.4</b> general option setting</a></li>
+<li class="chapter" data-level="6.5" data-path="curl.html"><a href="curl.html#curl-options-in-ropensci-packages"><i class="fa fa-check"></i><b>6.5</b> curl options in rOpenSci packages</a></li>
+<li class="chapter" data-level="6.6" data-path="curl.html"><a href="curl.html#timeout"><i class="fa fa-check"></i><b>6.6</b> timeout</a></li>
+<li class="chapter" data-level="6.7" data-path="curl.html"><a href="curl.html#verbose"><i class="fa fa-check"></i><b>6.7</b> verbose</a></li>
+<li class="chapter" data-level="6.8" data-path="curl.html"><a href="curl.html#headers"><i class="fa fa-check"></i><b>6.8</b> headers</a></li>
+<li class="chapter" data-level="6.9" data-path="curl.html"><a href="curl.html#authenticate"><i class="fa fa-check"></i><b>6.9</b> authenticate</a></li>
+<li class="chapter" data-level="6.10" data-path="curl.html"><a href="curl.html#cookies"><i class="fa fa-check"></i><b>6.10</b> cookies</a></li>
+<li class="chapter" data-level="6.11" data-path="curl.html"><a href="curl.html#progress"><i class="fa fa-check"></i><b>6.11</b> progress</a></li>
+<li class="chapter" data-level="6.12" data-path="curl.html"><a href="curl.html#proxies"><i class="fa fa-check"></i><b>6.12</b> proxies</a></li>
+<li class="chapter" data-level="6.13" data-path="curl.html"><a href="curl.html#user-agent"><i class="fa fa-check"></i><b>6.13</b> user agent</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ftp.html"><a href="ftp.html"><i class="fa fa-check"></i><b>7</b> FTP</a></li>
+<li class="chapter" data-level="8" data-path="http.html"><a href="http.html"><i class="fa fa-check"></i><b>8</b> HTTP</a><ul>
+<li class="chapter" data-level="8.1" data-path="http.html"><a href="http.html#http2"><i class="fa fa-check"></i><b>8.1</b> HTTP/2</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="caching.html"><a href="caching.html"><i class="fa fa-check"></i><b>9</b> Caching</a><ul>
+<li class="chapter" data-level="9.1" data-path="caching.html"><a href="caching.html#why-cache"><i class="fa fa-check"></i><b>9.1</b> Why cache?</a></li>
+<li class="chapter" data-level="9.2" data-path="caching.html"><a href="caching.html#http-based-caching"><i class="fa fa-check"></i><b>9.2</b> http based caching</a></li>
+<li class="chapter" data-level="9.3" data-path="caching.html"><a href="caching.html#r-based-caching"><i class="fa fa-check"></i><b>9.3</b> R based caching</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="caching.html"><a href="caching.html#vcr"><i class="fa fa-check"></i><b>9.3.1</b> vcr</a></li>
+<li class="chapter" data-level="9.3.2" data-path="caching.html"><a href="caching.html#rappdirs"><i class="fa fa-check"></i><b>9.3.2</b> rappdirs</a></li>
+<li class="chapter" data-level="9.3.3" data-path="caching.html"><a href="caching.html#other-packages"><i class="fa fa-check"></i><b>9.3.3</b> other packages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="packaging.html"><a href="packaging.html"><i class="fa fa-check"></i><b>10</b> Packaging</a><ul>
+<li class="chapter" data-level="10.1" data-path="packaging.html"><a href="packaging.html#http-functions"><i class="fa fa-check"></i><b>10.1</b> HTTP functions</a></li>
+<li class="chapter" data-level="10.2" data-path="packaging.html"><a href="packaging.html#curl-options"><i class="fa fa-check"></i><b>10.2</b> Curl options</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>11</b> Testing</a><ul>
+<li class="chapter" data-level="11.1" data-path="testing.html"><a href="testing.html#testthat"><i class="fa fa-check"></i><b>11.1</b> testthat</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="testing.html"><a href="testing.html#skipping-tests"><i class="fa fa-check"></i><b>11.1.1</b> Skipping tests</a></li>
+<li class="chapter" data-level="11.1.2" data-path="testing.html"><a href="testing.html#test-if-web-resource-is-up"><i class="fa fa-check"></i><b>11.1.2</b> Test if web resource is up</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="testing.html"><a href="testing.html#mocking-web-requests"><i class="fa fa-check"></i><b>11.2</b> Mocking web requests</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="testing.html"><a href="testing.html#vcr-1"><i class="fa fa-check"></i><b>11.2.1</b> vcr</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="testing.html"><a href="testing.html#webmockr"><i class="fa fa-check"></i><b>11.3</b> webmockr</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="package-automation.html"><a href="package-automation.html"><i class="fa fa-check"></i><b>12</b> Package Automation</a><ul>
+<li class="chapter" data-level="12.1" data-path="package-automation.html"><a href="package-automation.html#api-specifications"><i class="fa fa-check"></i><b>12.1</b> API Specifications</a></li>
+<li class="chapter" data-level="12.2" data-path="package-automation.html"><a href="package-automation.html#package-generator"><i class="fa fa-check"></i><b>12.2</b> Package generator</a></li>
+<li class="chapter" data-level="12.3" data-path="package-automation.html"><a href="package-automation.html#keeping-up-to-date"><i class="fa fa-check"></i><b>12.3</b> Keeping up to date</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -127,7 +173,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Building API Clients</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Building R Clients for Web Data</a>
           </h1>
         </div>
 
@@ -136,9 +182,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
             <section class="normal" id="section-">
 <div id="http" class="section level1">
-<h1><span class="header-section-number">7</span> HTTP</h1>
-<p>xxxx</p>
+<h1><span class="header-section-number">8</span> HTTP</h1>
+<p>Hypertext Transer Protocol, or HTTP, is an application protocol for data transfer, and is the foundation of data communication for the World Wide Web.</p>
+<div id="http2" class="section level2">
+<h2><span class="header-section-number">8.1</span> HTTP/2</h2>
+<p><a href="https://en.wikipedia.org/wiki/HTTP/2">HTTP/2</a> (see also <a href="https://http2.github.io/"><a href="https://http2.github.io/" class="uri">https://http2.github.io/</a></a>) is the next iteration of the HTTP protocol. It is born out of the standard created by Google called <a href="https://en.wikipedia.org/wiki/SPDY">SPDY</a>.</p>
+<p>In practice, HTTP/2 likely won’t be widely used for a few years. As of June 2016, HTTP/2 was <a href="https://w3techs.com/technologies/details/ce-http2/all/all">used by 8.2% of all websites</a>.</p>
 
+</div>
 </div>
             </section>
 
@@ -148,7 +199,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <a href="ftp.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="caching.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
-<script src="libs/gitbook-2.6.7/js/app.js"></script>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -175,7 +226,6 @@ gitbook.start({
 });
 });
 </script>
-
 
 </body>
 

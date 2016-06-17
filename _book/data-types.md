@@ -1,9 +1,9 @@
 
 # Data Types
 
-There are a lot of different types of data that you may work with -
-I'll go over the major ones as it's important to be familiar with
-the data you'll be working with in this book.
+There are a lot of different types of data from the web that you
+may work with - I'll go over the major ones as it's important to
+be familiar with the data you'll be working with in this book.
 
 ## JSON
 
@@ -62,11 +62,14 @@ easy to work with.
 Most web APIs provide JSON as the default data format, or at least
 provide it as an option.
 
-In R, the best way to work with JSON is with the `jsonlite` package. It
+In R, the best way to work with JSON is with the `jsonlite` package,
+made by [Jeroen Ooms](https://github.com/jeroenooms/). It
 is a modern JSON processor, and importantly converts JSON data
 structures described above to equivalent R data structures whenever
-possible. This makes it super easy to work with JSON data in R. Other
-JSON clients in R include `rjson` and `RJSONIO`.
+possible. This makes it super easy to work with JSON data in R, parsing
+the JSON but also giving back data.frames, which are easier to work
+with for most people. Other JSON clients in R include `rjson` and
+`RJSONIO`.
 
 ## XML
 
@@ -107,6 +110,11 @@ The best tools in R for working with HTML include `xml2` and `rvest`.
 
 I won't go into detail on files as there are hundreds, if not more,
 different file formats. Good R tools for working with files are
-`readr`, `data.table::fread`, and ...
+`readr`, `data.table::fread`, `rio`, etc.
 
-
+When files are large it's a good idea to cache them on the user's machine
+so that subsequent requests for the same files only take the time to
+read in the file, not the downloading time. Best practice for this is
+the package [rappdirs](https://github.com/hadley/rappdirs), which makes
+it easy to determine locations across operating systems for different
+types of file storage: caching vs. data vs. configuration vs. logging.

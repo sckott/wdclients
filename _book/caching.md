@@ -11,3 +11,14 @@
 ## R based caching
 
 ### vcr
+
+### rappdirs
+
+### other packages
+
+There are many others not specifically for caching, but you can
+use them for caching:
+
+* asdf
+* adsf
+* asdf

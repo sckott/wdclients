@@ -1,4 +1,19 @@
 
 # HTTP
 
-xxxx
+Hypertext Transer Protocol, or HTTP, is an application protocol for
+data transfer, and is the foundation of data communication for the
+World Wide Web.
+
+## HTTP/2
+
+[HTTP/2][http2wiki] (see also [https://http2.github.io/](https://http2.github.io/))
+is the next iteration of the HTTP protocol. It is
+born out of the standard created by Google called [SPDY][spdy].
+
+In practice, HTTP/2 likely won't be widely used for a few years. As of
+June 2016, HTTP/2 was [used by 8.2% of all websites][http2usage].
+
+[http2wiki]: https://en.wikipedia.org/wiki/HTTP/2
+[spdy]: https://en.wikipedia.org/wiki/SPDY
+[http2usage]: https://w3techs.com/technologies/details/ce-http2/all/all
