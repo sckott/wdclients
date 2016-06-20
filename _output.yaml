@@ -3,7 +3,7 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-        <li><strong><a href="./">Building R Clients For Web Data</a></strong></li>
+        <li><strong><a href="./">Web Data in R</a></strong></li>
     edit:
       link: https://github.com/sckott/wdclients/edit/master/%s
       text: "Edit"
