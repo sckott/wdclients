@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="working-with-apis.html">
-<link rel="next" href="curl.html">
+<link rel="prev" href="packaging.html">
+<link rel="next" href="testing.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -193,23 +193,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="api-clients" class="section level1">
-<h1><span class="header-section-number">5</span> API clients</h1>
-<div id="writing-r-packages" class="section level2">
-<h2><span class="header-section-number">5.1</span> Writing R packages</h2>
-<p>see Hadley’s book…</p>
+<div id="defensive-programming" class="section level1">
+<h1><span class="header-section-number">12</span> Defensive Programming</h1>
+<p>Defensive programming aims to make code fail well - now and in the future. This art is particuarly important when working with web resources - whether you’re scraping html, grabbing dumps of data, or working with web APIs - if you don’t control the server that provides the data, anything can change.</p>
+<div id="fail-fast" class="section level2">
+<h2><span class="header-section-number">12.1</span> Fail fast</h2>
 </div>
-<div id="core-http-helpers" class="section level2">
-<h2><span class="header-section-number">5.2</span> Core HTTP helpers</h2>
-</div>
-<div id="what-to-return-to-users" class="section level2">
-<h2><span class="header-section-number">5.3</span> What to return to users</h2>
-</div>
-<div id="abstracted-vs.1-to-1-user-interfaces" class="section level2">
-<h2><span class="header-section-number">5.4</span> Abstracted vs. 1-to-1 user interfaces</h2>
-</div>
-<div id="http-request-inspection" class="section level2">
-<h2><span class="header-section-number">5.5</span> HTTP request inspection</h2>
+<div id="what-to-defend-against" class="section level2">
+<h2><span class="header-section-number">12.2</span> What to defend against</h2>
 
 </div>
 </div>
@@ -218,8 +209,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
           </div>
         </div>
       </div>
-<a href="working-with-apis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="curl.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="packaging.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="testing.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -238,7 +229,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/sckott/wdclients/edit/master/api-clients.Rmd",
+"link": "https://github.com/sckott/wdclients/edit/master/defensive-programming.Rmd",
 "text": "Edit"
 },
 "download": null,

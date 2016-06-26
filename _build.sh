@@ -1,2 +1,2 @@
-#!/usr/bin/env Rscript
-bookdown::render_book("index.rmd")
+#!/usr/local/bin/ Rscript
+bookdown::render_book('index.rmd')
