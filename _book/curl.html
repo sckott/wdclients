@@ -8,7 +8,7 @@
   <title>Understanding Web Data in R, and Building Clients</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="This book will teach you how to leverage, and build clients for, data on the web">
-  <meta name="generator" content="bookdown 0.0.73 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.1.16 and GitBook 2.6.7">
 
   <meta property="og:title" content="Understanding Web Data in R, and Building Clients" />
   <meta property="og:type" content="book" />
@@ -25,6 +25,7 @@
 
 <meta name="author" content="Scott Chamberlain">
 
+  
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,23 +52,41 @@
 
 
 <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="wdclients.css" type="text/css" />
@@ -198,12 +217,12 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>curl is the de facto standard tool for making HTTP requests - in addition to many other types of data requests. It is also an R package (<a href="https://cran.rstudio.com/web/packages/curl/" class="uri">https://cran.rstudio.com/web/packages/curl/</a>).</p>
 <div id="discover-curl-options" class="section level2">
 <h2><span class="header-section-number">6.1</span> Discover curl options</h2>
-<p>You can go to the source, that is the curl manual page at <a href="http://curl.haxx.se/docs/manpage.html"><a href="http://curl.haxx.se/docs/manpage.html" class="uri">http://curl.haxx.se/docs/manpage.html</a></a>. In R: <code>RCurl::listCurlOptions()</code> for finding curl options, give website for more info and equivalent call in <code>httr</code> is <code>httr::httr_options()</code>. <code>httr::httr_options()</code> gives more information for each curl option, including the libcurl variable name (e.g., <code>CURLOPT_CERTINFO</code>) and the type of variable (e.g., logical).</p>
+<p>You can go to the source, that is the curl manual page at <a href="http://curl.haxx.se/docs/manpage.html" class="uri">http://curl.haxx.se/docs/manpage.html</a>. In R: <code>RCurl::listCurlOptions()</code> for finding curl options, give website for more info and equivalent call in <code>httr</code> is <code>httr::httr_options()</code>. <code>httr::httr_options()</code> gives more information for each curl option, including the libcurl variable name (e.g., <code>CURLOPT_CERTINFO</code>) and the type of variable (e.g., logical).</p>
 </div>
 <div id="other-ways-to-use-curl-besides-r" class="section level2">
 <h2><span class="header-section-number">6.2</span> Other ways to use curl besides R</h2>
-<p>Perhaps the canonical way to use curl is on the command line. You can get curl for your operating system at <a href="http://curl.haxx.se/download.html"><a href="http://curl.haxx.se/download.html" class="uri">http://curl.haxx.se/download.html</a></a>, though hopefully you already have curl. Once you have curl, you can have lots of fun. For example, get the contents of the Google landing page:</p>
-<pre class="sh"><code>curl https://www.google.com</code></pre>
+<p>Perhaps the canonical way to use curl is on the command line. You can get curl for your operating system at <a href="http://curl.haxx.se/download.html" class="uri">http://curl.haxx.se/download.html</a>, though hopefully you already have curl. Once you have curl, you can have lots of fun. For example, get the contents of the Google landing page:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">curl</span> https://www.google.com</code></pre></div>
 <ul>
 <li>If you like that you may also like <a href="https://github.com/jakubroztocil/httpie">httpie</a>, a Python command line tool that is a little more convenient than curl (e.g., JSON output is automatically parsed and colorized).</li>
 <li>Alot of data from the web is in JSON format. A great command line tool to pair with <code>curl</code> is <a href="http://stedolan.github.io/jq/">jq</a>.</li>
@@ -217,48 +236,47 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <blockquote>
 <p>Note: <code>RCurl</code> is a dependency, so you’ll get it when you install <code>httr</code></p>
 </blockquote>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;httr&quot;</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;httr&quot;</span>)</code></pre></div>
 <p>There are some new features in <code>httr</code> dev version you may want. If so, do:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)
-devtools::<span class="kw">install_github</span>(<span class="st">&quot;hadley/httr&quot;</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)
+devtools::<span class="kw">install_github</span>(<span class="st">&quot;hadley/httr&quot;</span>)</code></pre></div>
 <p>Load <code>httr</code></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;httr&quot;</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;httr&quot;</span>)</code></pre></div>
 </div>
 <div id="general-option-setting" class="section level2">
 <h2><span class="header-section-number">6.4</span> general option setting</h2>
 <p>With <code>httr</code> you can either set globally for an R session like</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set_config</span>(<span class="kw">timeout</span>(<span class="dt">seconds =</span> <span class="dv">2</span>))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set_config</span>(<span class="kw">timeout</span>(<span class="dt">seconds =</span> <span class="dv">2</span>))</code></pre></div>
 <p>Or use <code>with_config()</code></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with_config</span>(<span class="kw">verbose</span>(), {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with_config</span>(<span class="kw">verbose</span>(), {
   <span class="kw">GET</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>)
-})</code></pre>
+})</code></pre></div>
 <p>Or extensions to <code>with_*</code>, like for <code>verbose</code> output</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with_verbose</span>(
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with_verbose</span>(
   <span class="kw">GET</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>)
 )
 <span class="co">#&gt; Response [http://www.google.com/webhp]</span>
-<span class="co">#&gt;   Date: 2016-04-15 13:53</span>
+<span class="co">#&gt;   Date: 2016-10-10 03:47</span>
 <span class="co">#&gt;   Status: 200</span>
 <span class="co">#&gt;   Content-Type: text/html; charset=ISO-8859-1</span>
-<span class="co">#&gt;   Size: 10.5 kB</span>
+<span class="co">#&gt;   Size: 10.3 kB</span>
 <span class="co">#&gt; &lt;!doctype html&gt;&lt;html itemscope=&quot;&quot; itemtype=&quot;http://schema.org/WebPage&quot; l...</span>
-<span class="co">#&gt; function _gjh(){!_gjuc()&amp;&amp;window.google&amp;&amp;google.x&amp;&amp;google.x({id:&quot;GJH&quot;},f...</span>
 <span class="co">#&gt; &lt;/style&gt;&lt;style&gt;body,td,a,p,.h{font-family:arial,sans-serif}body{margin:0...</span>
 <span class="co">#&gt; if (!iesg){document.f&amp;&amp;document.f.q.focus();document.gbqf&amp;&amp;document.gbqf...</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; })();&lt;/script&gt;&lt;div id=&quot;mngb&quot;&gt;    &lt;div id=gbar&gt;&lt;nobr&gt;&lt;b class=gb1&gt;Search&lt;...</span></code></pre>
+<span class="co">#&gt; })();&lt;/script&gt;&lt;div id=&quot;mngb&quot;&gt;    &lt;div id=gbar&gt;&lt;nobr&gt;&lt;b class=gb1&gt;Search&lt;...</span></code></pre></div>
 <p>Or pass into each function call</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GET</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="dt">query=</span><span class="kw">list</span>(<span class="dt">q=</span><span class="st">&quot;httr&quot;</span>), <span class="kw">timeout</span>(<span class="dt">seconds =</span> <span class="fl">0.5</span>))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GET</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="dt">query=</span><span class="kw">list</span>(<span class="dt">q=</span><span class="st">&quot;httr&quot;</span>), <span class="kw">timeout</span>(<span class="dt">seconds =</span> <span class="fl">0.5</span>))</code></pre></div>
 <p>With <code>RCurl</code> you can set options for a function call by passing curl options to the <code>.opts</code> parameter</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getForm</span>(<span class="st">&quot;http://www.google.com/search?q=RCurl&quot;</span>, <span class="dt">btnG=</span><span class="st">&quot;Search&quot;</span>, <span class="dt">.opts =</span> <span class="kw">list</span>(<span class="dt">timeout.ms =</span> <span class="dv">20</span>))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getForm</span>(<span class="st">&quot;http://www.google.com/search?q=RCurl&quot;</span>, <span class="dt">btnG=</span><span class="st">&quot;Search&quot;</span>, <span class="dt">.opts =</span> <span class="kw">list</span>(<span class="dt">timeout.ms =</span> <span class="dv">20</span>))</code></pre></div>
 <p>For all examples below I’ll use <code>httr</code>, and pass in config options to function calls.</p>
 </div>
 <div id="curl-options-in-ropensci-packages" class="section level2">
 <h2><span class="header-section-number">6.5</span> curl options in rOpenSci packages</h2>
 <p>In most of our packages we allow you to pass in any curl options, either via <code>...</code> or a named parameter. We are increasingly making our packages consistent, but they may not all have this ability yet. For example, using the <code>rgbif</code> package, an R client for <a href="http://www.gbif.org/">GBIF</a>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;rgbif&quot;</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;rgbif&quot;</span>)</code></pre></div>
 <p>verbose output</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;rgbif&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;rgbif&quot;</span>)
 res &lt;-<span class="st"> </span><span class="kw">occ_search</span>(<span class="dt">geometry=</span><span class="kw">c</span>(-<span class="fl">125.0</span>,<span class="fl">38.4</span>,-<span class="fl">121.8</span>,<span class="fl">40.9</span>), <span class="dt">limit=</span><span class="dv">20</span>, <span class="dt">config=</span><span class="kw">verbose</span>())
 <span class="co">#&gt; -&gt; GET /v1/occurrence/search?geometry=POLYGON%28%28-125%2038.4%2C%20-121.8%2038.4%2C%20-121.8%2040.9%2C%20-125%2040.9%2C%20-125%2038.4%29%29&amp;limit=20&amp;offset=0 HTTP/1.1</span>
 <span class="co">#&gt; -&gt; User-Agent: curl/7.37.1 Rcurl/1.95.4.5 httr/0.6.0</span>
@@ -278,12 +296,12 @@ res &lt;-<span class="st"> </span><span class="kw">occ_search</span>(<span class
 <span class="co">#&gt; &lt;- Age: 209</span>
 <span class="co">#&gt; &lt;- Via: 1.1 varnish</span>
 <span class="co">#&gt; &lt;- Connection: keep-alive</span>
-<span class="co">#&gt; &lt;-</span></code></pre>
+<span class="co">#&gt; &lt;-</span></code></pre></div>
 <p>Print progress</p>
-<pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">occ_search</span>(<span class="dt">geometry=</span><span class="kw">c</span>(-<span class="fl">125.0</span>,<span class="fl">38.4</span>,-<span class="fl">121.8</span>,<span class="fl">40.9</span>), <span class="dt">limit=</span><span class="dv">20</span>, <span class="dt">config=</span><span class="kw">progress</span>())
-<span class="co">#&gt; |===================================================================| 100%</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">occ_search</span>(<span class="dt">geometry=</span><span class="kw">c</span>(-<span class="fl">125.0</span>,<span class="fl">38.4</span>,-<span class="fl">121.8</span>,<span class="fl">40.9</span>), <span class="dt">limit=</span><span class="dv">20</span>, <span class="dt">config=</span><span class="kw">progress</span>())
+<span class="co">#&gt; |===================================================================| 100%</span></code></pre></div>
 <p>You can also combine curl options - use <code>c()</code> in this case to combine them</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="kw">verbose</span>(), <span class="kw">progress</span>())
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="kw">verbose</span>(), <span class="kw">progress</span>())
 <span class="co">#&gt; &lt;request&gt;</span>
 <span class="co">#&gt; Options:</span>
 <span class="co">#&gt; * debugfunction: function (type, msg) </span>
@@ -311,20 +329,20 @@ res &lt;-<span class="st"> </span><span class="kw">occ_search</span>(<span class
 <span class="co">#&gt;         if (first) {</span>
 <span class="co">#&gt;             first &lt;&lt;- FALSE</span>
 <span class="co">#&gt;         }</span>
-<span class="co">#&gt;         cat(&quot;\rDownloading: &quot;, bytes(now, digits = 2), &quot;     &quot;, sep = &quot;&quot;)</span>
+<span class="co">#&gt;         cat(&quot;\rDownloading: &quot;, bytes(now, digits = 2), &quot;     &quot;, sep = &quot;&quot;, file = con)</span>
 <span class="co">#&gt;         if (now == total) </span>
-<span class="co">#&gt;             cat(&quot;\n&quot;)</span>
+<span class="co">#&gt;             cat(&quot;\n&quot;, file = con)</span>
 <span class="co">#&gt;         utils::flush.console()</span>
 <span class="co">#&gt;     }</span>
 <span class="co">#&gt;     else {</span>
 <span class="co">#&gt;         if (is.null(bar)) {</span>
-<span class="co">#&gt;             bar &lt;&lt;- utils::txtProgressBar(max = total, style = 3)</span>
+<span class="co">#&gt;             bar &lt;&lt;- utils::txtProgressBar(max = total, style = 3, file = con)</span>
 <span class="co">#&gt;         }</span>
 <span class="co">#&gt;         utils::setTxtProgressBar(bar, now)</span>
 <span class="co">#&gt;     }</span>
 <span class="co">#&gt;     TRUE</span>
-<span class="co">#&gt; }</span></code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">occ_search</span>(<span class="dt">geometry=</span><span class="kw">c</span>(-<span class="fl">125.0</span>,<span class="fl">38.4</span>,-<span class="fl">121.8</span>,<span class="fl">40.9</span>), <span class="dt">limit=</span><span class="dv">20</span>, <span class="dt">config=</span><span class="kw">c</span>(<span class="kw">verbose</span>(), <span class="kw">progress</span>()))
+<span class="co">#&gt; }</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">occ_search</span>(<span class="dt">geometry=</span><span class="kw">c</span>(-<span class="fl">125.0</span>,<span class="fl">38.4</span>,-<span class="fl">121.8</span>,<span class="fl">40.9</span>), <span class="dt">limit=</span><span class="dv">20</span>, <span class="dt">config=</span><span class="kw">c</span>(<span class="kw">verbose</span>(), <span class="kw">progress</span>()))
 <span class="co">#&gt; -&gt; GET /v1/occurrence/search?geometry=POLYGON%28%28-125%2038.4%2C%20-121.8%2038.4%2C%20-121.8%2040.9%2C%20-125%2040.9%2C%20-125%2038.4%29%29&amp;limit=20&amp;offset=0 HTTP/1.1</span>
 <span class="co">#&gt; -&gt; User-Agent: curl/7.37.1 Rcurl/1.95.4.5 httr/0.6.0</span>
 <span class="co">#&gt; -&gt; Host: api.gbif.org</span>
@@ -344,7 +362,7 @@ res &lt;-<span class="st"> </span><span class="kw">occ_search</span>(<span class
 <span class="co">#&gt; &lt;- Via: 1.1 varnish</span>
 <span class="co">#&gt; &lt;- Connection: keep-alive</span>
 <span class="co">#&gt; &lt;-</span>
-<span class="co">#&gt;   |======================================================================| 100%</span></code></pre>
+<span class="co">#&gt;   |======================================================================| 100%</span></code></pre></div>
 </div>
 <div id="timeout" class="section level2">
 <h2><span class="header-section-number">6.6</span> timeout</h2>
@@ -358,9 +376,9 @@ res &lt;-<span class="st"> </span><span class="kw">occ_search</span>(<span class
 <blockquote>
 <p>Note: For this section and those following, I’ll mention an <code>RCurl</code> equivalent if there is one.</p>
 </blockquote>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GET</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="kw">timeout</span>(<span class="fl">0.01</span>))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GET</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="kw">timeout</span>(<span class="fl">0.01</span>))
 <span class="co">#&gt; Error in function (type, msg, asError = TRUE)  :</span>
-<span class="co">#&gt;   Connection timed out after 16 milliseconds</span></code></pre>
+<span class="co">#&gt;   Connection timed out after 16 milliseconds</span></code></pre></div>
 <ul>
 <li><em>Why use this?</em> You sometimes are working with a web resource that is somewhat unreliable. For example, if you want to run a script on a server that may take many hours, and the web resource could be down at some point during that time, you could set the timeout and error catch the response so that the script doesn’t hang on a server that’s not responding. Another example could be if you call a web resource in an R package. In your test suite, you may want to test that a web resource is responding quickly, so you could set a timeout, and not test if that fails.</li>
 </ul>
@@ -375,7 +393,7 @@ res &lt;-<span class="st"> </span><span class="kw">occ_search</span>(<span class
 <li><code>RCurl</code>: <code>verbose=TRUE</code></li>
 </ul>
 <p>Just do a <code>HEAD</code> request so we don’t have to deal with big output</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">HEAD</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="kw">verbose</span>())
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">HEAD</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="kw">verbose</span>())
 <span class="co">#&gt; -&gt; HEAD / HTTP/1.1</span>
 <span class="co">#&gt; -&gt; User-Agent: curl/7.37.1 Rcurl/1.95.4.5 httr/0.6.0</span>
 <span class="co">#&gt; -&gt; Host: had.co.nz</span>
@@ -394,7 +412,7 @@ res &lt;-<span class="st"> </span><span class="kw">occ_search</span>(<span class
 <span class="co">#&gt;   Date: 2014-12-16 12:29</span>
 <span class="co">#&gt;   Status: 200</span>
 <span class="co">#&gt;   Content-Type: text/html</span>
-<span class="co">#&gt; &lt;EMPTY BODY&gt;</span></code></pre>
+<span class="co">#&gt; &lt;EMPTY BODY&gt;</span></code></pre></div>
 <ul>
 <li><em>Why use this?</em> As you can see verbose output gives you lots of information that may be useful for debugging a request. You typically don’t need verbose output unless you want to inspect a request.</li>
 </ul>
@@ -408,9 +426,9 @@ res &lt;-<span class="st"> </span><span class="kw">occ_search</span>(<span class
 <li><code>httr</code>: <code>add_headers()</code></li>
 <li><code>RCurl</code>: <code>httpheader</code></li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">HEAD</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="kw">add_headers</span>(<span class="dt">Accept =</span> <span class="st">&quot;application/json&quot;</span>))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">HEAD</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="kw">add_headers</span>(<span class="dt">Accept =</span> <span class="st">&quot;application/json&quot;</span>))
 res$request$opts$httpheader
-<span class="co">#&gt; NULL</span></code></pre>
+<span class="co">#&gt; NULL</span></code></pre></div>
 <blockquote>
 <p>Note: there are shortcuts for <code>add_headers(Accept = &quot;application/json&quot;)</code> and add_headers(Accept = “application/xml”): <code>accept_json()</code>, and <code>accept_xml()</code></p>
 </blockquote>
@@ -428,36 +446,36 @@ res$request$opts$httpheader
 <li><code>RCurl</code>: various</li>
 </ul>
 <p><code>authenticate()</code> for basic username/password authentication</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">authenticate</span>(<span class="dt">user =</span> <span class="st">&quot;foo&quot;</span>, <span class="dt">password =</span> <span class="st">&quot;bar&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">authenticate</span>(<span class="dt">user =</span> <span class="st">&quot;foo&quot;</span>, <span class="dt">password =</span> <span class="st">&quot;bar&quot;</span>)
 <span class="co">#&gt; &lt;request&gt;</span>
 <span class="co">#&gt; Options:</span>
 <span class="co">#&gt; * httpauth: 1</span>
-<span class="co">#&gt; * userpwd: foo:bar</span></code></pre>
+<span class="co">#&gt; * userpwd: foo:bar</span></code></pre></div>
 <p>To use an API key, this depends on the data provider. They may request it one or either of the header (in multiple different ways)</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">HEAD</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="kw">add_headers</span>(<span class="dt">Authorization =</span> <span class="st">&quot;Bearer 234kqhrlj2342&quot;</span>))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">HEAD</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="kw">add_headers</span>(<span class="dt">Authorization =</span> <span class="st">&quot;Bearer 234kqhrlj2342&quot;</span>))
 <span class="co"># or</span>
-<span class="kw">HEAD</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="kw">add_headers</span>(<span class="st">&quot;token&quot;</span> =<span class="st"> &quot;234kqhrlj2342&quot;</span>))</code></pre>
+<span class="kw">HEAD</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="kw">add_headers</span>(<span class="st">&quot;token&quot;</span> =<span class="st"> &quot;234kqhrlj2342&quot;</span>))</code></pre></div>
 <p>or as a query parameter (which is passed in the URL string)</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">HEAD</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="dt">query =</span> <span class="kw">list</span>(<span class="dt">api_key =</span> <span class="st">&quot;&lt;your key&gt;&quot;</span>))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">HEAD</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="dt">query =</span> <span class="kw">list</span>(<span class="dt">api_key =</span> <span class="st">&quot;&lt;your key&gt;&quot;</span>))</code></pre></div>
 <p>Another authentication options is OAuth workflows. <code>OAuth2</code> is probably more commonly used than <code>OAuth1</code>.</p>
 <ul>
 <li>Find OAuth settings for github <a href="http://developer.github.com/v3/oauth/" class="uri">http://developer.github.com/v3/oauth/</a></li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">endpts &lt;-<span class="st"> </span><span class="kw">oauth_endpoint</span>(<span class="dt">authorize =</span> <span class="st">&quot;authorize&quot;</span>, <span class="dt">access =</span> <span class="st">&quot;access_token&quot;</span>, <span class="dt">base_url =</span> <span class="st">&quot;https://github.com/login/oauth&quot;</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">endpts &lt;-<span class="st"> </span><span class="kw">oauth_endpoint</span>(<span class="dt">authorize =</span> <span class="st">&quot;authorize&quot;</span>, <span class="dt">access =</span> <span class="st">&quot;access_token&quot;</span>, <span class="dt">base_url =</span> <span class="st">&quot;https://github.com/login/oauth&quot;</span>)</code></pre></div>
 <ul>
 <li>Register an application at <a href="https://github.com/settings/applications" class="uri">https://github.com/settings/applications</a>. Use any URL you would like for the homepage URL (<a href="http://github.com" class="uri">http://github.com</a> is fine) and <a href="http://localhost:1410" class="uri">http://localhost:1410</a> as the callback url. Insert your client ID and secret below - if secret is omitted, it will look it up in the GITHUB_CONSUMER_SECRET environmental variable.</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">myapp &lt;-<span class="st"> </span><span class="kw">oauth_app</span>(<span class="dt">appname =</span> <span class="st">&quot;github&quot;</span>, <span class="dt">key =</span> <span class="st">&quot;&lt;key&gt;&quot;</span>, <span class="dt">secret =</span> <span class="st">&quot;&lt;secret&gt;&quot;</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myapp &lt;-<span class="st"> </span><span class="kw">oauth_app</span>(<span class="dt">appname =</span> <span class="st">&quot;github&quot;</span>, <span class="dt">key =</span> <span class="st">&quot;&lt;key&gt;&quot;</span>, <span class="dt">secret =</span> <span class="st">&quot;&lt;secret&gt;&quot;</span>)</code></pre></div>
 <ul>
 <li>Get OAuth credentials</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">github_token &lt;-<span class="st"> </span><span class="kw">oauth2.0_token</span>(endpts, myapp)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">github_token &lt;-<span class="st"> </span><span class="kw">oauth2.0_token</span>(endpts, myapp)</code></pre></div>
 <ul>
 <li>Use API</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">gtoken &lt;-<span class="st"> </span><span class="kw">config</span>(<span class="dt">token =</span> github_token)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gtoken &lt;-<span class="st"> </span><span class="kw">config</span>(<span class="dt">token =</span> github_token)
 req &lt;-<span class="st"> </span><span class="kw">GET</span>(<span class="st">&quot;https://api.github.com/rate_limit&quot;</span>, gtoken)
-<span class="kw">content</span>(req)</code></pre>
+<span class="kw">content</span>(req)</code></pre></div>
 </div>
 <div id="cookies" class="section level2">
 <h2><span class="header-section-number">6.10</span> cookies</h2>
@@ -469,25 +487,24 @@ req &lt;-<span class="st"> </span><span class="kw">GET</span>(<span class="st">&
 <li><code>RCurl</code>: <code>cookie</code></li>
 </ul>
 <p>Set cookies</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org/cookies&quot;</span>, <span class="kw">set_cookies</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">2</span>))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org/cookies&quot;</span>, <span class="kw">set_cookies</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">2</span>))
 <span class="co">#&gt; Response [http://httpbin.org/cookies]</span>
-<span class="co">#&gt;   Date: 2016-04-15 13:53</span>
+<span class="co">#&gt;   Date: 2016-10-10 03:47</span>
 <span class="co">#&gt;   Status: 200</span>
 <span class="co">#&gt;   Content-Type: application/json</span>
 <span class="co">#&gt;   Size: 51 B</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 <span class="co">#&gt; {</span>
 <span class="co">#&gt;   &quot;cookies&quot;: {</span>
 <span class="co">#&gt;     &quot;a&quot;: &quot;1&quot;, </span>
 <span class="co">#&gt;     &quot;b&quot;: &quot;2&quot;</span>
 <span class="co">#&gt;   }</span>
-<span class="co">#&gt; }</span></code></pre>
+<span class="co">#&gt; }</span></code></pre></div>
 <p>If there are cookies in a response, you can access them easily with <code>cookies()</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org/cookies/set&quot;</span>, <span class="dt">query =</span> <span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">2</span>))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org/cookies/set&quot;</span>, <span class="dt">query =</span> <span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">2</span>))
 <span class="kw">cookies</span>(res)
 <span class="co">#&gt;        domain  flag path secure expiration name value</span>
 <span class="co">#&gt; 1 httpbin.org FALSE    /  FALSE       &lt;NA&gt;    a     1</span>
-<span class="co">#&gt; 2 httpbin.org FALSE    /  FALSE       &lt;NA&gt;    b     2</span></code></pre>
+<span class="co">#&gt; 2 httpbin.org FALSE    /  FALSE       &lt;NA&gt;    b     2</span></code></pre></div>
 </div>
 <div id="progress" class="section level2">
 <h2><span class="header-section-number">6.11</span> progress</h2>
@@ -498,8 +515,8 @@ req &lt;-<span class="st"> </span><span class="kw">GET</span>(<span class="st">&
 <li><code>httr</code>: <code>progress()</code></li>
 <li><code>RCurl</code>: <code>progressfunction</code></li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org&quot;</span>, <span class="kw">progress</span>())
-<span class="co">#&gt; |==================================| 100%</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org&quot;</span>, <span class="kw">progress</span>())
+<span class="co">#&gt; |==================================| 100%</span></code></pre></div>
 <ul>
 <li><em>Why use this?</em> As you could imagine, this is increasingly useful as a request for a web resource takes longer and longer. For very long requests, this will help you know approximately when a request will finish.</li>
 </ul>
@@ -513,7 +530,7 @@ req &lt;-<span class="st"> </span><span class="kw">GET</span>(<span class="st">&
 <li><code>httr</code>: <code>use_proxy()</code></li>
 <li><code>RCurl</code>: See various curl options that start with <code>proxy</code></li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GET</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="kw">use_proxy</span>(<span class="dt">url =</span> <span class="st">&quot;125.39.66.66&quot;</span>, <span class="dt">port =</span> <span class="dv">80</span>, <span class="dt">username =</span> <span class="st">&quot;username&quot;</span>, <span class="dt">password =</span> <span class="st">&quot;password&quot;</span>))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GET</span>(<span class="st">&quot;http://www.google.com/search&quot;</span>, <span class="kw">use_proxy</span>(<span class="dt">url =</span> <span class="st">&quot;125.39.66.66&quot;</span>, <span class="dt">port =</span> <span class="dv">80</span>, <span class="dt">username =</span> <span class="st">&quot;username&quot;</span>, <span class="dt">password =</span> <span class="st">&quot;password&quot;</span>))</code></pre></div>
 <ul>
 <li><em>Why use this?</em> Most of us likely don’t need to worry about this. However, if you are in a work place, or maybe in certain geographic locations, you may have to use a proxy. I haven’t personally used a proxy in R, so any feedback on this is great.</li>
 </ul>
@@ -528,27 +545,25 @@ req &lt;-<span class="st"> </span><span class="kw">GET</span>(<span class="st">&
 <li><code>RCurl</code>: <code>useragent</code></li>
 </ul>
 <p>Get the default user agent set if using <code>httr</code></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org/user-agent&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org/user-agent&quot;</span>)
 <span class="co">#&gt; Response [http://httpbin.org/user-agent]</span>
-<span class="co">#&gt;   Date: 2016-04-15 13:53</span>
+<span class="co">#&gt;   Date: 2016-10-10 03:47</span>
 <span class="co">#&gt;   Status: 200</span>
 <span class="co">#&gt;   Content-Type: application/json</span>
-<span class="co">#&gt;   Size: 61 B</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
+<span class="co">#&gt;   Size: 59 B</span>
 <span class="co">#&gt; {</span>
-<span class="co">#&gt;   &quot;user-agent&quot;: &quot;libcurl/7.43.0 r-curl/0.9.7 httr/1.1.0&quot;</span>
-<span class="co">#&gt; }</span></code></pre>
+<span class="co">#&gt;   &quot;user-agent&quot;: &quot;libcurl/7.49.1 r-curl/2.1 httr/1.2.1&quot;</span>
+<span class="co">#&gt; }</span></code></pre></div>
 <p>Set a user agent string</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org/user-agent&quot;</span>, <span class="kw">user_agent</span>(<span class="st">&quot;its me!&quot;</span>))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org/user-agent&quot;</span>, <span class="kw">user_agent</span>(<span class="st">&quot;its me!&quot;</span>))
 <span class="co">#&gt; Response [http://httpbin.org/user-agent]</span>
-<span class="co">#&gt;   Date: 2016-04-15 13:53</span>
+<span class="co">#&gt;   Date: 2016-10-10 03:47</span>
 <span class="co">#&gt;   Status: 200</span>
 <span class="co">#&gt;   Content-Type: application/json</span>
 <span class="co">#&gt;   Size: 30 B</span>
-<span class="co">#&gt; No encoding supplied: defaulting to UTF-8.</span>
 <span class="co">#&gt; {</span>
 <span class="co">#&gt;   &quot;user-agent&quot;: &quot;its me!&quot;</span>
-<span class="co">#&gt; }</span></code></pre>
+<span class="co">#&gt; }</span></code></pre></div>
 <ul>
 <li><em>Why use this?</em> This is set by default in a http request, as you can see in the first example above for user agent. Some web APIs require that you set a specific user agent. For example, the <a href="https://developer.github.com/v3/#user-agent-required">GitHub API</a> requires that you include a user agent string in the header of each request that is your username or the name of your application so they can contact you if there is a problem.</li>
 </ul>

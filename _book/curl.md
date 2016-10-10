@@ -70,12 +70,11 @@ with_verbose(
   GET("http://www.google.com/search")
 )
 #> Response [http://www.google.com/webhp]
-#>   Date: 2016-04-15 13:53
+#>   Date: 2016-10-10 03:47
 #>   Status: 200
 #>   Content-Type: text/html; charset=ISO-8859-1
-#>   Size: 10.5 kB
+#>   Size: 10.3 kB
 #> <!doctype html><html itemscope="" itemtype="http://schema.org/WebPage" l...
-#> function _gjh(){!_gjuc()&&window.google&&google.x&&google.x({id:"GJH"},f...
 #> </style><style>body,td,a,p,.h{font-family:arial,sans-serif}body{margin:0...
 #> if (!iesg){document.f&&document.f.q.focus();document.gbqf&&document.gbqf...
 #> }
@@ -174,14 +173,14 @@ c(verbose(), progress())
 #>         if (first) {
 #>             first <<- FALSE
 #>         }
-#>         cat("\rDownloading: ", bytes(now, digits = 2), "     ", sep = "")
+#>         cat("\rDownloading: ", bytes(now, digits = 2), "     ", sep = "", file = con)
 #>         if (now == total) 
-#>             cat("\n")
+#>             cat("\n", file = con)
 #>         utils::flush.console()
 #>     }
 #>     else {
 #>         if (is.null(bar)) {
-#>             bar <<- utils::txtProgressBar(max = total, style = 3)
+#>             bar <<- utils::txtProgressBar(max = total, style = 3, file = con)
 #>         }
 #>         utils::setTxtProgressBar(bar, now)
 #>     }
@@ -364,11 +363,10 @@ Set cookies
 ```r
 GET("http://httpbin.org/cookies", set_cookies(a = 1, b = 2))
 #> Response [http://httpbin.org/cookies]
-#>   Date: 2016-04-15 13:53
+#>   Date: 2016-10-10 03:47
 #>   Status: 200
 #>   Content-Type: application/json
 #>   Size: 51 B
-#> No encoding supplied: defaulting to UTF-8.
 #> {
 #>   "cookies": {
 #>     "a": "1", 
@@ -430,13 +428,12 @@ Get the default user agent set if using `httr`
 ```r
 GET("http://httpbin.org/user-agent")
 #> Response [http://httpbin.org/user-agent]
-#>   Date: 2016-04-15 13:53
+#>   Date: 2016-10-10 03:47
 #>   Status: 200
 #>   Content-Type: application/json
-#>   Size: 61 B
-#> No encoding supplied: defaulting to UTF-8.
+#>   Size: 59 B
 #> {
-#>   "user-agent": "libcurl/7.43.0 r-curl/0.9.7 httr/1.1.0"
+#>   "user-agent": "libcurl/7.49.1 r-curl/2.1 httr/1.2.1"
 #> }
 ```
 
@@ -446,11 +443,10 @@ Set a user agent string
 ```r
 GET("http://httpbin.org/user-agent", user_agent("its me!"))
 #> Response [http://httpbin.org/user-agent]
-#>   Date: 2016-04-15 13:53
+#>   Date: 2016-10-10 03:47
 #>   Status: 200
 #>   Content-Type: application/json
 #>   Size: 30 B
-#> No encoding supplied: defaulting to UTF-8.
 #> {
 #>   "user-agent": "its me!"
 #> }

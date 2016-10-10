@@ -8,7 +8,7 @@
   <title>Understanding Web Data in R, and Building Clients</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="This book will teach you how to leverage, and build clients for, data on the web">
-  <meta name="generator" content="bookdown 0.0.73 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.1.16 and GitBook 2.6.7">
 
   <meta property="og:title" content="Understanding Web Data in R, and Building Clients" />
   <meta property="og:type" content="book" />
@@ -25,6 +25,7 @@
 
 <meta name="author" content="Scott Chamberlain">
 
+  
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,23 +52,41 @@
 
 
 <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="wdclients.css" type="text/css" />
@@ -200,16 +219,16 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <h2><span class="header-section-number">2.1</span> JSON</h2>
 <p>JSON (Javascript Object Notation) is becoming the most common data format on the web. Compared to XML (described below), it is simpler, and easier for humans to read. However, JSON does lose some specificity and metadata that XML is so good at. There is a variant of JSON called JSON-LD, for JSON Linked Data, that allows context to be included with a JSON document, e.g., linking to schema.</p>
 <p>The most basic valid JSON document is <code>{}</code>, but of course it carries little value. A basic JSON blob with information looks like:</p>
-<pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
     <span class="dt">&quot;hello&quot;</span><span class="fu">:</span> <span class="st">&quot;world&quot;</span>
-<span class="fu">}</span></code></pre>
+<span class="fu">}</span></code></pre></div>
 <p>Another example:</p>
-<pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
     <span class="dt">&quot;foo&quot;</span><span class="fu">:</span> <span class="fu">{</span>
         <span class="dt">&quot;bar&quot;</span><span class="fu">:</span> <span class="st">&quot;Hello World!&quot;</span>
     <span class="fu">}</span>
-<span class="fu">}</span></code></pre>
-<p>JSON <a href="http://www.json.org/"><a href="http://www.json.org/" class="uri">http://www.json.org/</a></a> is built on two structures:</p>
+<span class="fu">}</span></code></pre></div>
+<p>JSON <a href="http://www.json.org/" class="uri">http://www.json.org/</a> is built on two structures:</p>
 <ul>
 <li>A collection of name-value pairs, where the name is a string and the value can be a variety of objects.</li>
 <li>An ordered list of values. In most languages, this is realized as an array, vector, list, or sequence.</li>
@@ -228,11 +247,11 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </div>
 <div id="xml" class="section level2">
 <h2><span class="header-section-number">2.2</span> XML</h2>
-<p>XML (Extensible Markup Language) is a markup language - not just a data interchange format as is JSON. You can find the specification at <a href="https://www.w3.org/TR/xml/"><a href="https://www.w3.org/TR/xml/" class="uri">https://www.w3.org/TR/xml/</a></a>.</p>
+<p>XML (Extensible Markup Language) is a markup language - not just a data interchange format as is JSON. You can find the specification at <a href="https://www.w3.org/TR/xml/" class="uri">https://www.w3.org/TR/xml/</a>.</p>
 <p>Here’s an example:</p>
-<pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;foo&gt;</span>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;foo&gt;</span>
     <span class="kw">&lt;bar&gt;</span>Hello World!<span class="kw">&lt;/bar&gt;</span>
-<span class="kw">&lt;/foo&gt;</span></code></pre>
+<span class="kw">&lt;/foo&gt;</span></code></pre></div>
 <p>You can see how XML differs from JSON, but also the similarities. XML uses named elements, which JSON also uses (it’s keys). XML simply takes up more text (bytes) to transfer the same amount of content, which makes JSON more appealing in cases where efficiency matters (e.g. in browser, and mobile platforms).</p>
 </div>
 <div id="html" class="section level2">

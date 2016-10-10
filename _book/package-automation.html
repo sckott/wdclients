@@ -8,7 +8,7 @@
   <title>Understanding Web Data in R, and Building Clients</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="This book will teach you how to leverage, and build clients for, data on the web">
-  <meta name="generator" content="bookdown 0.0.73 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.1.16 and GitBook 2.6.7">
 
   <meta property="og:title" content="Understanding Web Data in R, and Building Clients" />
   <meta property="og:type" content="book" />
@@ -25,6 +25,7 @@
 
 <meta name="author" content="Scott Chamberlain">
 
+  
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,23 +52,41 @@
 
 
 <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="wdclients.css" type="text/css" />
@@ -199,27 +218,27 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <div id="api-specifications" class="section level2">
 <h2><span class="header-section-number">14.1</span> API Specifications</h2>
 <p>Some REST APIs have machine readable specifications for their API. Most small operations don’t have time for this, so you usually see this in larger companies. These specifications allow a definition of the API, but can also be used to programmatically create a client.</p>
-<p>The <code>apispecs</code> repo <a href="https://github.com/ropenscilabs/apispecs"><a href="https://github.com/ropenscilabs/apispecs" class="uri">https://github.com/ropenscilabs/apispecs</a></a> holds an increasing set of API specifications targeting smaller scientifically useful APIs that don’t already have specifications. We are using the OpenAPI specification.</p>
+<p>The <code>apispecs</code> repo <a href="https://github.com/ropenscilabs/apispecs" class="uri">https://github.com/ropenscilabs/apispecs</a> holds an increasing set of API specifications targeting smaller scientifically useful APIs that don’t already have specifications. We are using the OpenAPI specification.</p>
 <p>xxx…</p>
 </div>
 <div id="package-generator" class="section level2">
 <h2><span class="header-section-number">14.2</span> Package generator</h2>
-<p><code>apipkgen</code> <a href="https://github.com/ropenscilabs/apipkgen"><a href="https://github.com/ropenscilabs/apipkgen" class="uri">https://github.com/ropenscilabs/apipkgen</a></a> is a package that can be used to generate R clients from API specs.</p>
+<p><code>apipkgen</code> <a href="https://github.com/ropenscilabs/apipkgen" class="uri">https://github.com/ropenscilabs/apipkgen</a> is a package that can be used to generate R clients from API specs.</p>
 <p>The following is a brief example</p>
-<pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">&quot;ropenscilabs/apipkgen&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;apipkgen&quot;</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">&quot;ropenscilabs/apipkgen&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;apipkgen&quot;</span>)</code></pre></div>
 <p>Generate a package using the function <code>generate_pkg()</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">template &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&#39;examples&#39;</span>, <span class="st">&#39;template_crossref.yml&#39;</span>, <span class="dt">package =</span> <span class="st">&quot;apipkgen&quot;</span>)
-apipkgen::<span class="kw">generate_pkg</span>(<span class="st">&quot;../crpkg&quot;</span>, <span class="dt">template_path =</span> template)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">template &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&#39;examples&#39;</span>, <span class="st">&#39;template_crossref.yml&#39;</span>, <span class="dt">package =</span> <span class="st">&quot;apipkgen&quot;</span>)
+apipkgen::<span class="kw">generate_pkg</span>(<span class="st">&quot;../crpkg&quot;</span>, <span class="dt">template_path =</span> template)</code></pre></div>
 <p>The package created doesn’t have any exported functions, just internal functions for your to build user facing functions.</p>
 <p>Let’s write a user facing functions. The Crossref API template above specified for the <code>works</code> route that parameters are <code>query</code> and <code>rows</code>. So let’s work with those.</p>
-<pre class="sourceCode r"><code class="sourceCode r">crossref_works &lt;-<span class="st"> </span>function(<span class="dt">query =</span> <span class="ot">NULL</span>, <span class="dt">rows =</span> <span class="ot">NULL</span>, ...) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crossref_works &lt;-<span class="st"> </span>function(<span class="dt">query =</span> <span class="ot">NULL</span>, <span class="dt">rows =</span> <span class="ot">NULL</span>, ...) {
   <span class="kw">works</span>(<span class="dt">query =</span> query, <span class="dt">rows =</span> rows, ...)
-}</code></pre>
+}</code></pre></div>
 <p>In addition, it’s a good idea to always allow users to pass in curl options. Beginners can ignore it, but power curl users will want/have to play with curl options. The function builder builds in <code>...</code> as a parameter so in the user facing function above all you have to do is add that as well for users to access.</p>
 <p>Now install the new package. Go to the new directory, and in R/RStudio run <code>devtools::document()</code> and <code>devtools::install()</code> (or equivalent).</p>
 <p>Now you can use the package. Call the function. The package builder gives back plain text, so you have to parse it yourself.</p>
-<pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">crossref_works</span>(<span class="dt">query =</span> <span class="st">&quot;science&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">crossref_works</span>(<span class="dt">query =</span> <span class="st">&quot;science&quot;</span>)
 jsonlite::<span class="kw">fromJSON</span>(res)
 <span class="co">#&gt; $status</span>
 <span class="co">#&gt; [1] &quot;ok&quot;</span>
@@ -247,7 +266,7 @@ jsonlite::<span class="kw">fromJSON</span>(res)
 <span class="co">#&gt; 1        2015, 12, 27 2015-12-27T23:37:50Z      1.451259e+12               0</span>
 <span class="co">#&gt; 2        2015, 12, 24 2015-12-24T22:03:23Z      1.450995e+12               0</span>
 <span class="co">#&gt; 3        2015, 12, 25 2015-12-25T19:17:30Z      1.451071e+12               0</span>
-<span class="co">#&gt; 4        2015, 12, 27 2015-12-27T19:35:51Z      1.451245e+12               0</span></code></pre>
+<span class="co">#&gt; 4        2015, 12, 27 2015-12-27T19:35:51Z      1.451245e+12               0</span></code></pre></div>
 </div>
 <div id="keeping-up-to-date" class="section level2">
 <h2><span class="header-section-number">14.3</span> Keeping up to date</h2>
