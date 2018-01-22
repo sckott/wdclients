@@ -70,15 +70,15 @@ with_verbose(
   GET("http://www.google.com/search")
 )
 #> Response [http://www.google.com/webhp]
-#>   Date: 2016-10-10 03:47
+#>   Date: 2018-01-20 05:36
 #>   Status: 200
 #>   Content-Type: text/html; charset=ISO-8859-1
-#>   Size: 10.3 kB
+#>   Size: 11 kB
 #> <!doctype html><html itemscope="" itemtype="http://schema.org/WebPage" l...
 #> </style><style>body,td,a,p,.h{font-family:arial,sans-serif}body{margin:0...
 #> if (!iesg){document.f&&document.f.q.focus();document.gbqf&&document.gbqf...
 #> }
-#> })();</script><div id="mngb">    <div id=gbar><nobr><b class=gb1>Search<...
+#> })();</script><div id="mngb"> <div id=gbar><nobr><b class=gb1>Search</b>...
 ```
 
 Or pass into each function call
@@ -150,7 +150,7 @@ c(verbose(), progress())
 #> Options:
 #> * debugfunction: function (type, msg) 
 #> {
-#>     switch(type + 1, text = if (info) prefix_message("*  ", msg), headerIn = prefix_message("<- ", msg), headerOut = prefix_message("-> ", msg), dataIn = if (data_in) prefix_message("<<  ", msg, TRUE), dataOut = if (data_out) prefix_message(">> ", msg, TRUE), sslDataIn = if (data_in && ssl) prefix_message("*< ", msg, TRUE), sslDataOut = if (data_out && ssl) prefix_message("*> ", msg, TRUE))
+#>     switch(type + 1, text = if (info) prefix_message("*  ", msg), headerIn = prefix_message("<- ", msg), headerOut = prefix_message("-> ", msg), dataIn = if (data_in) prefix_message("<<  ", msg, TRUE), dataOut = if (data_out) prefix_message(">> ", msg, TRUE), sslDataIn = if (ssl && data_in) prefix_message("*< ", msg, TRUE), sslDataOut = if (ssl && data_out) prefix_message("*> ", msg, TRUE))
 #> }
 #> * verbose: TRUE
 #> * noprogress: FALSE
@@ -166,16 +166,9 @@ c(verbose(), progress())
 #>     }
 #>     if (total == 0 && now == 0) {
 #>         bar <<- NULL
-#>         first <<- TRUE
-#>         return(TRUE)
 #>     }
-#>     if (total == 0) {
-#>         if (first) {
-#>             first <<- FALSE
-#>         }
+#>     else if (total == 0) {
 #>         cat("\rDownloading: ", bytes(now, digits = 2), "     ", sep = "", file = con)
-#>         if (now == total) 
-#>             cat("\n", file = con)
 #>         utils::flush.console()
 #>     }
 #>     else {
@@ -183,6 +176,8 @@ c(verbose(), progress())
 #>             bar <<- utils::txtProgressBar(max = total, style = 3, file = con)
 #>         }
 #>         utils::setTxtProgressBar(bar, now)
+#>         if (now == total) 
+#>             close(bar)
 #>     }
 #>     TRUE
 #> }
@@ -363,7 +358,7 @@ Set cookies
 ```r
 GET("http://httpbin.org/cookies", set_cookies(a = 1, b = 2))
 #> Response [http://httpbin.org/cookies]
-#>   Date: 2016-10-10 03:47
+#>   Date: 2018-01-20 05:36
 #>   Status: 200
 #>   Content-Type: application/json
 #>   Size: 51 B
@@ -428,12 +423,12 @@ Get the default user agent set if using `httr`
 ```r
 GET("http://httpbin.org/user-agent")
 #> Response [http://httpbin.org/user-agent]
-#>   Date: 2016-10-10 03:47
+#>   Date: 2018-01-20 05:36
 #>   Status: 200
 #>   Content-Type: application/json
 #>   Size: 59 B
 #> {
-#>   "user-agent": "libcurl/7.49.1 r-curl/2.1 httr/1.2.1"
+#>   "user-agent": "libcurl/7.54.0 r-curl/3.1 httr/1.3.1"
 #> }
 ```
 
@@ -443,7 +438,7 @@ Set a user agent string
 ```r
 GET("http://httpbin.org/user-agent", user_agent("its me!"))
 #> Response [http://httpbin.org/user-agent]
-#>   Date: 2016-10-10 03:47
+#>   Date: 2018-01-20 05:36
 #>   Status: 200
 #>   Content-Type: application/json
 #>   Size: 30 B

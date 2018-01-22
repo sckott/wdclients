@@ -14,6 +14,14 @@
 
 ### rappdirs
 
+### hoardr
+
+### R.cache
+
+### storr
+
+### rrlite
+
 ### other packages
 
 There are many others not specifically for caching, but you can

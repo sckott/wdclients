@@ -2,6 +2,7 @@
 ---
 knit: "bookdown::render_book"
 title: "Understanding Web Data in R, and Building Clients"
+date: "built on 2018-01-22"
 author: "Scott Chamberlain"
 description: "This book will teach you how to leverage, and build clients for, data on the web"
 url: 'https\://github.com/sckott/wdclients'

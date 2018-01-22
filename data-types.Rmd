@@ -4,7 +4,7 @@ There are a lot of different types of data from the web that you
 may work with - I'll go over the major ones as it's important to
 be familiar with the data you'll be working with in this book.
 
-## JSON
+## JSON {#data-types-json}
 
 JSON (Javascript Object Notation) is becoming the most common
 data format on the web. Compared to XML (described below),
@@ -34,8 +34,7 @@ Another example:
 }
 ```
 
-JSON [http://www.json.org/](http://www.json.org/) is built on two
-structures:
+JSON <https://www.json.org/> is built on two structures:
 
 * A collection of name-value pairs, where the name is a string and the
 value can be a variety of objects.
@@ -61,16 +60,16 @@ easy to work with.
 Most web APIs provide JSON as the default data format, or at least
 provide it as an option.
 
-In R, the best way to work with JSON is with the `jsonlite` package,
-made by [Jeroen Ooms](https://github.com/jeroenooms/). It
+In R, the best way to work with JSON is with the [jsonlite][] package,
+made by [Jeroen Ooms](https://github.com/jeroen/). It
 is a modern JSON processor, and importantly converts JSON data
 structures described above to equivalent R data structures whenever
 possible. This makes it super easy to work with JSON data in R, parsing
 the JSON but also giving back data.frames, which are easier to work
-with for most people. Other JSON clients in R include `rjson` and
-`RJSONIO`.
+with for most people. Other JSON clients in R include [rjson][] and
+[RJSONIO][].
 
-## XML
+## XML {#data-types-xml}
 
 XML (Extensible Markup Language) is a markup language - not just a data
 interchange format as is JSON. You can find the specification at
@@ -90,7 +89,7 @@ up more text (bytes) to transfer the same amount of content, which makes
 JSON more appealing in cases where efficiency matters (e.g. in browser,
 and mobile platforms).
 
-## HTML
+## HTML {#data-types-html}
 
 HTML (Hyptertext Markup Lanugage) is the language of the web (together with
 CSS for styling and Javascript for adding behavior).
@@ -103,17 +102,29 @@ moment, breaking your code to work with it - whereas an API or a file you
 download likely will not change, or change less often, or change in non-breaking
 ways.
 
-The best tools in R for working with HTML include `xml2` and `rvest`.
+The best tools in R for working with HTML include [xml2][] and [rvest][].
 
-## Files
+## Files {#data-types-files}
 
 I won't go into detail on files as there are hundreds, if not more,
 different file formats. Good R tools for working with files are
-`readr`, `data.table::fread`, `rio`, etc.
+[readr][], `fread` in [data.table][], and [rio][], etc.
 
 When files are large it's a good idea to cache them on the user's machine
 so that subsequent requests for the same files only take the time to
 read in the file, not the downloading time. Best practice for this is
-the package [rappdirs](https://github.com/hadley/rappdirs), which makes
+the package [hoardr][] built on [rappdirs][], which makes
 it easy to determine locations across operating systems for different
 types of file storage: caching vs. data vs. configuration vs. logging.
+
+
+[hoardr]: https://cran.rstudio.com/web/packages/hoardr/
+[rappdirs]: https://cran.rstudio.com/web/packages/rappdirs/
+[xml2]: https://cran.rstudio.com/web/packages/xml2/
+[rvest]: https://cran.rstudio.com/web/packages/rvest/
+[readr]: https://cran.rstudio.com/web/packages/readr/
+[data.table]: https://cran.rstudio.com/web/packages/data.table/
+[rio]: https://cran.rstudio.com/web/packages/rio/
+[jsonlite]: https://cran.rstudio.com/web/packages/jsonlite/
+[rjson]: https://cran.rstudio.com/web/packages/rjson/
+[RJSONIO]: https://cran.rstudio.com/web/packages/RJSONIO/

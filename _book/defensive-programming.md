@@ -8,4 +8,32 @@ if you don't control the server that provides the data, anything can change.
 
 ## Fail fast
 
+tldr: put code for catching errors/etc. at the top of your functions. 
+
+- catch errors as soon as possible
+- R doesn't have type checking, so check types - otherwise users get useless errors later on
+- esp. catch errors before long running processes
+-  
+
 ## What to defend against
+
+- user inputs
+    - you can't control what users pass to a function
+    - input types/classes
+    - input lengths
+    - missing inputs 
+- server stuff
+    - every web service is different
+    - a web service gives: 
+        - error occurs: gives incorrect HTTP status code and same content type (e.g., give 200 when should be 404 or 503; both JSON on success and on error)
+        - error occurs: gives incorrect HTTP status code and different content type (e.g., give 200 when should be 404 or 503; JSON on success but HTML on error)
+        - error occurs: gives correct HTTP status code, and same content type (e.g. 404; JSON on success and fail)
+        - error occurs: gives correct HTTP status code, but different content type (e.g., 404; JSON on success but HTML on fail) 
+
+## Give users good erors
+
+- HTTP status and description
+- error from (usually) JSON response body
+    - this has to be very specific to the data source 
+    - tricky b/c some will error and give no body, error and give wrong HTTP status code, error and give mismatching content type for actual content type, and more 
+- ada

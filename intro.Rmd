@@ -1,3 +1,15 @@
+```{r include=FALSE, cache=FALSE}
+set.seed(1014)
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  cache = TRUE
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+```
 # Introduction
 
 ```{r setup-intro, include = FALSE}
@@ -28,14 +40,14 @@ whether the data is from FTP, scraped from website, or through a web API.
 To run the code in this book, you will need to install both R and the RStudio IDE, an application that makes R easier to use. Both are open source, free and easy to install:
 
 1. Download and install R, <https://www.r-project.org/alt-home/>.
-1. Download and install RStudio, <http://www.rstudio.com/download>.
+1. Download and install RStudio, <https://www.rstudio.com/download>.
 1. Install needed packages (see below).
 
 ### R packages
 
 ```{r}
 pkgs <- c(
-  "jsonlite", "knitr", "httr"
+  "jsonlite", "knitr", "curl", "httr", "crul"
 )
 install.packages(pkgs)
 ```
@@ -47,7 +59,7 @@ R will download the packages from CRAN and install them in your system library. 
 You will not be able to use the functions, objects, and help files in a package until you load it with `library()`. After you have downloaded the packages, you can load any of the packages into your current R session with the `library()` command, e.g.
 
 ```{r, eval = FALSE}
-library(httr)
+library(crul)
 ```
 
 You will need to reload the package every time you start a new R session.
@@ -64,6 +76,6 @@ This book was built with:
 devtools::session_info(pkgs)
 ```
 
-[imdb]: http://www.omdbapi.com/
+[imdb]: https://www.omdbapi.com/
 [sw]: https://swapi.co/
 [datagov]: https://www.data.gov/
