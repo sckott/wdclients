@@ -12,7 +12,6 @@ tldr: put code for catching errors/etc. at the top of your functions.
 - catch errors as soon as possible
 - R doesn't have type checking, so check types - otherwise users get useless errors later on
 - esp. catch errors before long running processes
--  
 
 ## What to defend against
 

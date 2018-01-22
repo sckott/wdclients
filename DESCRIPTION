@@ -1,8 +1,8 @@
 Package: wdclients
 Title: Creating API Clients.
-Version: 0.1.2.9990
+Version: 0.2.0
 Authors@R: person("Scott", "Chamberlain", "myrmecocystus@gmail.com", c("aut", "cre"))
-Depends: R (>= 3.1.0)
+Depends: R (>= 3.4.3)
 URL: https://github.com/sckott/wdclients
 BugReports: https://github.com/sckott/wdclients/issues
 Imports:

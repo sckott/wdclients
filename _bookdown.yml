@@ -1,22 +1,5 @@
-new_session: yes
-
-rmd_files: [
-  "index.Rmd",
-  "intro.Rmd",
-  "data-types.Rmd",
-  "apis.Rmd",
-  "working-with-apis.Rmd",
-  "api-clients.Rmd",
-  "curl.Rmd",
-  "ftp.Rmd",
-  "http.Rmd",
-  "authentication.Rmd",
-  "caching.Rmd",
-  "packaging.Rmd",
-  "defensive-programming.Rmd",
-  "testing.Rmd",
-  "package-automation.Rmd",
-  "easy-http-requests.Rmd"
-]
-
-before_chapter_script: "_common.R"
+output_dir: "docs"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true

@@ -1,0 +1,7 @@
+base
+devtools
+knitr
+bookdown
+testthat
+httr
+rgbif
